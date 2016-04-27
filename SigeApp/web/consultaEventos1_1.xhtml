@@ -21,8 +21,8 @@
                 <h:form>
                 
                 <p:dataTable value="#{EventoBean.listaEventos}" var="evento" rows="3" paginator="true">
-                    <p:column headerText="ID" sortBy="#{evento.id}" filterBy="#{evento.id}" width="120">
-                        #{evento.id}
+                    <p:column headerText="Data(s) Evento(s)" sortBy="#{evento.dataEvento}" filterBy="#{evento.dataEvento}" width="120">
+                        #{evento.dataEvento}
                     </p:column>
                     <p:column headerText="Eventos" sortBy="#{evento.tituloEvento}" filterBy="#{evento.tituloEvento}">
                         #{evento.tituloEvento}
@@ -30,6 +30,8 @@
                     <p:column width="90">
                         <p:commandButton ajax="false" title="Visualizar" icon="ui-icon-search" actionListener="#{EventoBean.carregar(evento.id)}" action="evento1"/>
                         <p:commandButton ajax="false" title="Remover" icon="ui-icon-trash" actionListener="#{EventoBean.remover(evento)}"/>
+                        <p:commandButton ajax="false" title="Voltar" icon="ui-icon-return" actionListener="#"/>
+                        <p:commandButton ajax="false" title="Editar" icon="ui-icon-pencil" actionListener="#"/>
                     </p:column>
                 </p:dataTable>
             </h:form>
@@ -46,4 +48,3 @@
         </p:layout>
     </h:body>
 </html>
-
