@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title><ui:insert name="title">Titulo da página</ui:insert></title>
+        <h:outputStylesheet library="css" name="default.css"/>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true" >
+
+            <p:layoutUnit position="north" size="100"  resizable="false" closable="true" collapsible="true" gutter="0">
+                <h1 class="titulo">Sistema Gerênciador de Eventos</h1>
+            </p:layoutUnit>
+
+
+            <p:layoutUnit position="west" size="200" gutter="0" resizable="true" closable="true" collapsible="true">
+               <h:outputText value="ESPAÇO!" />
+            </p:layoutUnit>
+
+            <p:layoutUnit position="east" size="200" header="MENU"  resizable="true"  collapsible="true" effect="puff" gutter="0">
+                <h:outputText value="Right unit content." />
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center" size="50%" style="border: 1px solid #045491">
+                conteudo padrão
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" size="100"  resizable="false" closable="true" collapsible="true" gutter="0">
+                footer padrão
+            </p:layoutUnit>
+
+
+        </p:layout>
+    </h:body>
+</html>
+
