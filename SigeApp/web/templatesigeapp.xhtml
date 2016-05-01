@@ -7,33 +7,42 @@
     <h:head>
         <title><ui:insert name="title">Titulo da página</ui:insert></title>
         <h:outputStylesheet library="css" name="default.css"/>
+        <h:outputStylesheet library="css" name="menu.css"/>
+        <h:outputScript library="js" name="js.js"/>
     </h:head>
     <h:body>
-        <p:layout fullPage="true" >
-
-            <p:layoutUnit position="north" size="100"  resizable="false" closable="true" collapsible="true" gutter="0">
-                <h1 class="titulo">Sistema Gerênciador de Eventos</h1>
-            </p:layoutUnit>
-
-
-            <p:layoutUnit position="west" size="200" gutter="0" resizable="true" closable="true" collapsible="true">
-               <h:outputText value="ESPAÇO!" />
-            </p:layoutUnit>
-
-            <p:layoutUnit position="east" size="200" header="MENU"  resizable="true"  collapsible="true" effect="puff" gutter="0">
-                <h:outputText value="Right unit content." />
-            </p:layoutUnit>
-
-            <p:layoutUnit position="center" size="50%" style="border: 1px solid #045491">
-                conteudo padrão
-            </p:layoutUnit>
-
-            <p:layoutUnit position="south" size="100"  resizable="false" closable="true" collapsible="true" gutter="0">
-                footer padrão
-            </p:layoutUnit>
-
-
-        </p:layout>
+        <div id="site">
+            <div id="head">
+                <a href="https://github.com/joaofolle/sige">
+                    <p:graphicImage library="img" name="git.png" title="Link para o projeto" width="40"/>
+                </a>
+                <h1>Sistema Gerenciador de Eventos</h1>
+               
+            </div>
+            <div id='cssmenu'>
+                <ul>
+                    <li><a href='#'><span>Home</span></a></li>
+                    <li class='has-sub'><a href='#'><span>Products</span></a>
+                        <ul>
+                            <li><a href='#'><span>Product 1</span></a>                                        
+                            </li>
+                            <li><a href='#'><span>Product 2</span></a>                                     
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href='#'><span>About</span></a></li>
+                    <li class='last'><a href='#'><span>Contact</span></a></li>
+                </ul>
+            </div>
+            <div id="conteudo">
+                <ui:insert name="conteudo">CONTEUDO VAZIO</ui:insert>
+            </div>
+            <footer>
+                <div style="display: none"> <p:clock /></div>
+                <address>Todos direitos reservados<sup>©</sup> 2016 IFRS Campus Restinga</address>                
+            </footer>
+            <div class="nox"></div>
+        </div>
     </h:body>
 </html>
 

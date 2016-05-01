@@ -1,30 +1,117 @@
-body {
-    background-color: #ffffff;
-    font-size: 12px;
-    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
-    color: #000000;  
-    margin: 10px;
+/*@import url(https://fonts.googleapis.com/css?family=Sigmar+One);
+@import url(https://fonts.googleapis.com/css?family=Slabo+27px);*/
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-   .titulo{
-  font-size: 5vw;
-  text-align: center;border: 2px solid red;
+html ,body{
+    height: 100%;
+    width: 100%;
+    min-width: 720px;
+}
+#site{
+    height: 100%;border: 2px solid deeppink;
 }
 
-a:link, a:visited {
-  color: #045491;
-  font-weight : bold;
-  text-decoration: none;
+#head{
+    height: 75px;
+    font-size: 22px;
+    background: #2B2F3A;
+    position: relative;
+    width: 100%;
+    color: white;
+}
+#head h1{
+    text-align: center;
+    font-size: 200%;
+    font-family: 'Sigmar One', cursive;
+    clear: both;    
 }
 
-a:link:hover, a:visited:hover  {
-  color: #045491;
-  font-weight : bold;
-  text-decoration : underline;
+
+#conteudo{
+    height: calc(100% - 170px);    
+    min-height: 500px;
+    overflow: auto;  
+    position: relative;
+    border-top: 1px solid deeppink; 
 }
-.ui-layout-unit{
-    border: 1px solid #045491;
-    border-radius: 0!important;
-    margin: 0!important;
-    padding: 0!important; 
+footer{
+    height: 50px;
+    position: relative;
+    clear: both;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 1s ease-in-out;
+}
+ footer:hover  {
+    background: #2B2F3A;
+    color: white;
+}
+#head img{
+    position: absolute;     
+    right: 5px;
+    top: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid white;
+    background: white;
+}
+#head img:hover{    
+    background: deeppink;    
+}
+
+address{
+    color: blue;
+}
+#formulario *{
+    font-family: 'Slabo 27px', serif;
+    color: black;
+    box-shadow: none!important;
+}
+#formulario{
+    margin: auto;
+    border: 2px solid #2B2F3A;    
+}
+#formulario textarea {   
+    height: 1.8em; 
+    transition: all 0.5s ease-in-out;
+}
+#formulario textarea:focus{
+    height: 200px;
+}
+#formulario input[type='text']{
+    margin: 0;   
+}
+#formulario p{
+    margin: 5px;
+}
+#formulario .ui-panelgrid-cell{
+    border-color: rgba(0,0,0,0.1);
+    
+}
+#formulario  input[type='text']:focus{
+    
+}
+.ui-outputlabel{
+    
+}
+.nox{
+    background: #2B2F3A;
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 0;
+    transform: rotate(45deg);
+    left: -50px;
+    transition: all 1s ease-out;
+    color: #2B2F3A;
+}
+.nox:hover{
+    transform: rotate(90deg);
+    left: 0;
+    color: white;
 }

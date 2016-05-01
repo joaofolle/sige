@@ -18,31 +18,33 @@
             <p:layoutUnit position="center" style="text-align: center;text-decoration-color: #ffffff">
                 <p:messages/>
                 <div style="background-color:#346bcf;text-align:center;text-decoration-color: #ffffff;position:absolute; box-sizing: border-box;">
-                <h:form>
-                    <h:panelGrid columns="2" style="text-align: left" >
-                        <p:outputLabel style="color: #ffffff;font-size: larger" value="O que você está propondo ?"/><br/>
-                        <p:outputLabel for="TipoEvento"  value="Tipo de Evento:" style="color: #ffffff"/>
-                        <p:selectOneRadio id="TipoEvento" value="#{EventoBean.evento.tipoEvento}">
-                            <f:selectItem itemLabel="Palestra" itemValue="Palestra" />
-                            <f:selectItem itemLabel="Oficina" itemValue="Oficina" />
-                            <f:selectItem itemLabel="Cursos" itemValue="Curso" />
-                        </p:selectOneRadio>
-                        <p:outputLabel for="txtTituloEvento" value="Título do Evento: " style="color: #ffffff"/>
-                        <p:inputText id="txtTituloEvento" label="tituloEvento" maxlength="100" size="40" value="#{EventoBean.evento.tituloEvento}" required="true"/>
-                        <p:outputLabel for="txtTrilhaEvento" value="Trilha do Evento: "  style="color: #ffffff"/>
-                        <p:inputText id="txtTrilhaEvento" label="TrilhaEvento" maxlength="100" size="40" value="#{EventoBean.evento.trilhaEvento}" required="true"/>
-                        <p:outputLabel for="calDataEvento" value="Data do Evento: " style="color: #ffffff"/>
-                        <p:calendar id="calDataEvento" size="40" navigator="true" yearRange="c-100:c+0" pattern="dd/MM/yyyy" value="#{EventoBean.evento.dataEvento}"/>
-                        <p:outputLabel for="txtDescricaoEvento" value="Descrição do Evento: " style="color: #ffffff"/>
-                        <p:inputTextarea id="txtDescricaoEvento" label="DescricaoEvento" cols="40" rows="5" value="#{EventoBean.evento.descricaoEvento}"/>
-                        <p:outputLabel style="color: #ffffff;font-size: larger" value="Quem vai apresentar ?" /><br/>
-                        <p:outputLabel for="txtAutor" value="Autor(es): " style="color: #ffffff"/>
-                        <p:inputText id="txtAutor" label="Autor" maxlength="100" size="40" value="#{EventoBean.evento.autor}" required="true"/>
-                    </h:panelGrid>
-                    <p:button value="Voltar" outcome="padraoInterno"/>
-                    <p:commandButton ajax="false" value="Criar Evento" actionListener="#{EventoBean.salvar()}" action="padraoInterno"/>
-                </h:form>
-                
+
+
+                    <h:form>
+                        <h:panelGrid columns="2" style="text-align: left" >
+                            <p:outputLabel style="color: #ffffff;font-size: larger" value="O que você está propondo ?"/><br/>
+                            <p:outputLabel for="TipoEvento"  value="Tipo de Evento:" style="color: #ffffff"/>
+                            <p:selectOneRadio id="TipoEvento" value="#{EventoBean.evento.tipoEvento}">
+                                <f:selectItem itemLabel="Palestra" itemValue="Palestra" />
+                                <f:selectItem itemLabel="Oficina" itemValue="Oficina" />
+                                <f:selectItem itemLabel="Cursos" itemValue="Curso" />
+                            </p:selectOneRadio>
+                            <p:outputLabel for="txtTituloEvento" value="Título do Evento: " style="color: #ffffff"/>
+                            <p:inputText id="txtTituloEvento" label="tituloEvento" maxlength="100" size="40" value="#{EventoBean.evento.tituloEvento}" required="true"/>
+                            <p:outputLabel for="txtTrilhaEvento" value="Trilha do Evento: "  style="color: #ffffff"/>
+                            <p:inputText id="txtTrilhaEvento" label="TrilhaEvento" maxlength="100" size="40" value="#{EventoBean.evento.trilhaEvento}" required="true"/>
+                            <p:outputLabel for="calDataEvento" value="Data do Evento: " style="color: #ffffff"/>
+                            <p:calendar id="calDataEvento" size="40" navigator="true" yearRange="c-100:c+0" pattern="dd/MM/yyyy" value="#{EventoBean.evento.dataEvento}"/>
+                            <p:outputLabel for="txtDescricaoEvento" value="Descrição do Evento: " style="color: #ffffff"/>
+                            <p:inputTextarea id="txtDescricaoEvento" label="DescricaoEvento" cols="40" rows="5" value="#{EventoBean.evento.descricaoEvento}"/>
+                            <p:outputLabel style="color: #ffffff;font-size: larger" value="Quem vai apresentar ?" /><br/>
+                            <p:outputLabel for="txtAutor" value="Autor(es): " style="color: #ffffff"/>
+                            <p:inputText id="txtAutor" label="Autor" maxlength="100" size="40" value="#{EventoBean.evento.autor}" required="true"/>
+                        </h:panelGrid>
+                        <p:button value="Voltar" outcome="padraoInterno"/>
+                        <p:commandButton ajax="false" value="Criar Evento" actionListener="#{EventoBean.salvar()}" action="padraoInterno"/>
+                    </h:form>
+
                 </div>
             </p:layoutUnit>
             <p:layoutUnit position="south" size="70">
