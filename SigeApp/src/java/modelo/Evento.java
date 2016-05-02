@@ -2,9 +2,14 @@ package modelo;
 
 import java.util.Date;
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -43,6 +48,19 @@ public class Evento implements Serializable {
     
     @Temporal(TemporalType.TIME)
     private Date horario;
+    
+    @ManyToMany
+    @JoinColumn(name="id")
+    private Evento evento;    
+
+    public Evento getEvento() {
+        return evento;
+    }
+
+    public void setEvento(Evento evento) {
+        this.evento = evento;
+    }
+    
 
     public String getSegundoautor() {
         return segundoautor;
