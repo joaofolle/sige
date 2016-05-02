@@ -131,3 +131,36 @@ address{
    background: #e6e6e6;
    padding: 5px;
 }
+.repeat-home{
+    height: 200px;
+    width: 100%;
+    min-width: 600px;
+    background: linear-gradient(red,tomato);
+    margin-bottom: 5px;
+    border: 1px solid black;
+}
+.repeat-home-participar{
+    width: 200px;
+    height: 198px;
+    float: right;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.repeat-home-participar *{
+    color: white;
+    text-decoration: none;    
+}
+.repeat-btn{
+    background: radial-gradient( #00b300,#006600);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18pt;
+}
+.repeat-btn:hover{
+     background: radial-gradient( #006600,#001a00);
+}
