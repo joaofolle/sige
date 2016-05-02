@@ -10,9 +10,10 @@ import javax.faces.context.FacesContext;
 import modelo.Evento;
 import persistencia.EventoDAO;
 
-@ManagedBean(name="EventoBean")
+@ManagedBean(name = "EventoBean")
 @RequestScoped
 public class CadastroEventosBean {
+
     private Evento evento = new Evento();
     private EventoDAO dao = new EventoDAO();
     private List<Evento> listaEventos;
@@ -20,7 +21,7 @@ public class CadastroEventosBean {
     public CadastroEventosBean() {
         listaEventos = dao.listar();
     }
-    
+
     public Evento getEvento() {
         return evento;
     }
@@ -28,31 +29,33 @@ public class CadastroEventosBean {
     public void setEvento(Evento evento) {
         this.evento = evento;
     }
-    
+
     public List<Evento> getListaEventos() {
         return listaEventos;
     }
-        
+
     public void salvar() {
         dao.salvar(evento);
         enviarMensagem(FacesMessage.SEVERITY_INFO, "Evento cadastrado com sucesso");
         evento = new Evento();
+        listaEventos = dao.listar();
     }
-    
+
     public void carregar(int id) {
         evento = dao.carregar(id);
     }
-    
+
     public void remover(Evento evento) {
         dao.remover(evento);
         enviarMensagem(FacesMessage.SEVERITY_INFO, "Evento removido com sucesso");
+        listaEventos = dao.listar();
     }
-    
+
     private void enviarMensagem(Severity sev, String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(sev, msg, ""));
     }
-    
+
     @PreDestroy
     public void encerrar() {
         dao.encerrar();

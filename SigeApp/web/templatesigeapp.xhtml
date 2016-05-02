@@ -17,23 +17,27 @@
                     <p:graphicImage library="img" name="git.png" title="Link para o projeto" width="40"/>
                 </a>
                 <h1>Sistema Gerenciador de Eventos</h1>
-               
+
             </div>
+            <h:form prependId="false" id="template">
             <div id='cssmenu'>
-                <ul>
-                    <li><a href='#'><span>Home</span></a></li>
-                    <li class='has-sub'><a href='#'><span>Products</span></a>
-                        <ul>
-                            <li><a href='#'><span>Product 1</span></a>                                        
-                            </li>
-                            <li><a href='#'><span>Product 2</span></a>                                     
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href='#'><span>About</span></a></li>
-                    <li class='last'><a href='#'><span>Contact</span></a></li>
-                </ul>
+                
+                    <ul>
+                        <li><p:commandLink ajax="false" action="index" value="HOME"/> </li>
+                        <li class='has-sub'><a href='#'><span>Products</span></a>
+                            <ul>
+                                <li><a href='#'><span>Product 1</span></a>                                        
+                                </li>
+                                <li><a href='#'><span>Product 2</span></a>                                     
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href='#'><span>About</span></a></li>
+                        <li class='last'><a href='#'><span>Contato</span></a></li>
+                    </ul>
+                
             </div>
+            </h:form>
             <div id="conteudo">
                 <ui:insert name="conteudo">CONTEUDO VAZIO</ui:insert>
             </div>

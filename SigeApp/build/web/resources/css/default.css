@@ -1,9 +1,9 @@
-/*@import url(https://fonts.googleapis.com/css?family=Sigmar+One);
-@import url(https://fonts.googleapis.com/css?family=Slabo+27px);*/
+@import url(https://fonts.googleapis.com/css?family=Sigmar+One);
+@import url(https://fonts.googleapis.com/css?family=Slabo+27px);
 *{
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding: 0;    
 }
 
 html ,body{
@@ -47,7 +47,7 @@ footer{
     justify-content: center;
     transition: all 1s ease-in-out;
 }
- footer:hover  {
+footer:hover  {
     background: #2B2F3A;
     color: white;
 }
@@ -74,7 +74,8 @@ address{
 }
 #formulario{
     margin: auto;
-    border: 2px solid #2B2F3A;    
+    border: 2px solid #2B2F3A;
+    box-shadow: 10px 10px 5px #888888;
 }
 #formulario textarea {   
     height: 1.8em; 
@@ -91,13 +92,13 @@ address{
 }
 #formulario .ui-panelgrid-cell{
     border-color: rgba(0,0,0,0.1);
-    
+
 }
 #formulario  input[type='text']:focus{
-    
+
 }
 .ui-outputlabel{
-    
+
 }
 .nox{
     background: #2B2F3A;
@@ -114,4 +115,19 @@ address{
     transform: rotate(90deg);
     left: 0;
     color: white;
+}
+#datatable{
+    font-family: 'Slabo 27px', serif; 
+}
+.center{
+    background:  #cccccc;
+    height: 100%;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*reservado*/
+.whit{
+   background: #e6e6e6;
+   padding: 5px;
 }
