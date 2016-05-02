@@ -20,8 +20,12 @@
 
                     <ui:repeat value="#{EventoBean.listaEventos}" var="ev" >
                         <div class="repeat-home">
+                            
                             <div class="repeat-home-titulo">
-
+                                <h1>#{ev.tituloEvento}</h1>
+                                <p>autor: #{ev.autor}</p>
+                                <p>Sobre: #{ev.descricaoEvento}</p>
+                                <p>data: #{ev.dataEvento}</p>
                             </div>
                             <div class="repeat-home-participar">
                                 <p:commandLink styleClass="repeat-btn" action="index" value="Quero Participar!"/>

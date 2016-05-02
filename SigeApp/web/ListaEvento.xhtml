@@ -15,6 +15,7 @@
             </ui:define>
 
             <ui:define name="conteudo">
+                <div class="nome" >  #{loginBean.usuario.nome} </div>
                 <p:messages/>
                 <h:form prependId="false">
 
@@ -33,9 +34,9 @@
                         </p:column>
                         <p:column headerText="Ações" width="200">
                             <p:commandButton ajax="false" title="Visualizar" icon="ui-icon-search" actionListener="#{EventoBean.carregar(evento.id)}" action="evento1"/>
-                            <p:commandButton ajax="false" title="Remover" icon="ui-icon-trash" actionListener="#{EventoBean.remover(evento)}"/>
-                            <p:commandButton ajax="false" title="Voltar" icon="ui-icon-return" actionListener="#"/>
+                            <p:commandButton ajax="false" title="Remover" icon="ui-icon-trash" actionListener="#{EventoBean.remover(evento)}"/>                            
                             <p:commandButton ajax="false" title="Editar" icon="ui-icon-pencil" actionListener="#"/>
+                            <p:commandButton ajax="false" title="Participar" icon="ui-icon-check" actionListener="#"/>
                         </p:column>
                     </p:dataTable>
                 </h:form>

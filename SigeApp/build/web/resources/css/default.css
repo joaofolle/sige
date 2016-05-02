@@ -128,22 +128,21 @@ address{
 }
 /*reservado*/
 .whit{
-   background: #e6e6e6;
-   padding: 5px;
+    background: #e6e6e6;
+    padding: 5px;
 }
 .repeat-home{
-    height: 200px;
+    height: 200px;    
     width: 100%;
-    min-width: 600px;
-    background: linear-gradient(red,tomato);
+    min-width: 600px;    
     margin-bottom: 5px;
-    border: 1px solid black;
+    border: 2px solid black;
+    border-right-color: transparent;
+    display: flex;
 }
 .repeat-home-participar{
-    width: 200px;
-    height: 198px;
-    float: right;
-    border: 1px solid white;
+    width: 198px;
+    height: 198px;        
     display: flex;
     align-items: center;
     justify-content: center;
@@ -160,7 +159,49 @@ address{
     align-items: center;
     justify-content: center;
     font-size: 18pt;
+    margin-left: 2px;
+    border: 2px solid black;
+    color: white;
+}
+.btn-size{
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    margin-left: 20px;
+    background: #2B2F3A;
 }
 .repeat-btn:hover{
-     background: radial-gradient( #006600,#001a00);
+    background: radial-gradient( #006600,#008000);
+    transform: rotate(10deg);
+}
+.repeat-home-titulo{
+    width: calc(100% - 205px);  
+    text-align: center;
+    text-transform: uppercase;
+    
+}
+.repeat-home-titulo h1{
+    font-family: 'Sigmar One', cursive;
+    font-size: 32pt;   
+    color: #2B2F3A;
+}
+.repeat-home-titulo p{
+    font-family: 'Slabo 27px', serif;
+    font-size: 20pt;
+   
+}
+.nome{
+    text-align: right;
+    position: absolute;
+    width: 100%;    
+    left: 0;
+    top:0;
+    font-size: 26pt;
+    animation-name: nome;
+    animation-duration: 4s;
+    text-transform: uppercase;
+}
+@keyframes nome {
+    from {background-color: red;}
+    to {background-color: trasparent;}
 }
