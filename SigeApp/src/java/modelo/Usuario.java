@@ -2,19 +2,22 @@ package modelo;
 
 import java.util.Date;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
-@Table(name="usuarios")
+@Table(name = "usuarios")
 public class Usuario implements Serializable {
+
     @Id
     @GeneratedValue
     private int id;
@@ -29,21 +32,21 @@ public class Usuario implements Serializable {
 
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
-     
     
-    @ManyToMany(mappedBy = "Evento")
-    @JoinColumn(name="id")
-    private Usuario usuario;
+    @ManyToMany
+    @JoinTable(name = "Palestra",
+            joinColumns = @JoinColumn(name = "evento_id"),
+            inverseJoinColumns = @JoinColumn(name = "usuario_id"))
+    private List<Evento> usuario;
 
-    public Usuario getUsuario() {
+    public List<Evento> getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(List<Evento> usuario) {
         this.usuario = usuario;
     }
-    
-    
+        
     public int getId() {
         return id;
     }
@@ -83,7 +86,7 @@ public class Usuario implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
     public String getEndereco() {
         return endereco;
     }
@@ -107,8 +110,8 @@ public class Usuario implements Serializable {
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-    
-        public String getLogin() {
+
+    public String getLogin() {
         return login;
     }
 
@@ -123,5 +126,5 @@ public class Usuario implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
+
 }

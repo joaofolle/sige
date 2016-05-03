@@ -6,6 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title><ui:insert name="title">Titulo da página</ui:insert></title>
+        <link rel="icon" href="resources/img/favicon.png" />
         <h:outputStylesheet library="css" name="default.css"/>
         <h:outputStylesheet library="css" name="menu.css"/>
         <h:outputScript library="js" name="js.js"/>
@@ -23,7 +24,7 @@
             <div id='cssmenu'>
                 
                     <ul>
-                        <li><p:commandLink ajax="false" action="home" value="HOME"/> </li>
+                        <li><p:commandLink ajax="false" action="index" value="Home"/> </li>
                        <!--
                        para segunda sprint
                         <li class='has-sub'><a href='#'><span>participantes</span></a>

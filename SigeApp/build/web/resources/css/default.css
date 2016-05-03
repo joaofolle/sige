@@ -192,11 +192,10 @@ address{
 }
 .nome{
     text-align: right;
-    position: absolute;
-    width: 100%;    
+    position: absolute;        
     left: 0;
     top:0;
-    font-size: 26pt;
+    font-size: 18pt;
     animation-name: nome;
     animation-duration: 4s;
     text-transform: uppercase;
