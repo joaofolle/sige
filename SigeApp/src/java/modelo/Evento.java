@@ -34,30 +34,30 @@ public class Evento implements Serializable {
     private String segundoautor;
     @NotEmpty
     private String lugar;
-    
+
     @Temporal(TemporalType.DATE)
     private Date dataEvento;
-    
+
     @Temporal(TemporalType.DATE)
     private Date inicioEvento;
-    
+
     @Temporal(TemporalType.DATE)
     private Date fimEvento;
-    
+
     @Temporal(TemporalType.TIME)
     private Date horario;
-    
-    @ManyToMany(mappedBy = "usuario")
-    private List<Usuario> evento;
 
-    public List<Usuario> getEvento() {
-        return evento;
+    @ManyToMany(mappedBy = "usuario")
+    private List<Usuario> listUsuario;
+
+    public List<Usuario> getListUsuario() {
+        return listUsuario;
     }
 
-    public void setEvento(List<Usuario> evento) {
-        this.evento = evento;
-    }   
-    
+    public void setListUsuario(List<Usuario> listUsuario) {
+        this.listUsuario = listUsuario;
+    }
+
     public String getSegundoautor() {
         return segundoautor;
     }
@@ -153,5 +153,4 @@ public class Evento implements Serializable {
     public void setDataEvento(Date dataEvento) {
         this.dataEvento = dataEvento;
     }
-
 }
