@@ -10,6 +10,7 @@ import persistencia.UsuarioDAO;
 @ManagedBean
 @SessionScoped
 public class LoginBean {
+
     private Usuario usuario = new Usuario();
 
     public Usuario getUsuario() {
@@ -19,11 +20,11 @@ public class LoginBean {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
+
     public String autenticar() {
         UsuarioDAO dao = new UsuarioDAO();
         usuario = dao.autentica(usuario.getLogin(), usuario.getSenha());
-        if(usuario == null) {
+        if (usuario == null) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login ou senha incorretos.", ""));
             usuario = new Usuario();
             return "index";
