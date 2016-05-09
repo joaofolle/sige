@@ -12,6 +12,10 @@ public class UsuarioDAO {
         sessao.beginTransaction();
     }
     
+    public void adicionar(Usuario usuario) {
+        sessao.saveOrUpdate(usuario);
+    }
+    
     public void salvar(Usuario usuario) {
         sessao.saveOrUpdate(usuario);
     }
