@@ -35,17 +35,18 @@ public class Usuario implements Serializable {
     
     @ManyToMany
     @JoinTable(name = "Palestra",
-            joinColumns = @JoinColumn(name = "evento_id"),
-            inverseJoinColumns = @JoinColumn(name = "usuario_id"))
-    private List<Evento> usuario;
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "evento_id"))
+    private List<Evento> listEvento;
 
-    public List<Evento> getUsuario() {
-        return usuario;
+    public List<Evento> getListEvento() {
+        return listEvento;
     }
 
-    public void setUsuario(List<Evento> usuario) {
-        this.usuario = usuario;
+    public void setListEvento(List<Evento> listEvento) {
+        this.listEvento = listEvento;
     }
+
         
     public int getId() {
         return id;
@@ -126,5 +127,6 @@ public class Usuario implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
 
 }
