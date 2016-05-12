@@ -13,7 +13,9 @@ public class EventoDAO {
     }
     
     public void salvar(Evento e) {
-        sessao.saveOrUpdate(e);
+        //sessao.saveOrUpdate(e);
+        sessao.merge(e);
+        
     }
     
     public Evento carregar(int id) {

@@ -3,6 +3,8 @@ package modelo;
 import java.util.Date;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,6 +23,8 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue
     private int id;
+    
+    @Column(nullable=false)
     private String nome;
     private String cpf;
     private String telefone;
@@ -33,20 +37,16 @@ public class Usuario implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
     
-    @ManyToMany
-    @JoinTable(name = "Palestra",
-            joinColumns = @JoinColumn(name = "usuario_id"),
-            inverseJoinColumns = @JoinColumn(name = "evento_id"))
-    private List<Evento> listEvento;
+    @ManyToMany(mappedBy = "evento",cascade = CascadeType.ALL)
+    private List<Evento> usuarios;
 
-    public List<Evento> getListEvento() {
-        return listEvento;
+    public List<Evento> getUsuario() {
+        return usuarios;
     }
 
-    public void setListEvento(List<Evento> listEvento) {
-        this.listEvento = listEvento;
+    public void setUsuario(List<Evento> usuario) {
+        this.usuarios = usuario;
     }
-
         
     public int getId() {
         return id;
@@ -127,6 +127,5 @@ public class Usuario implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
 
 }

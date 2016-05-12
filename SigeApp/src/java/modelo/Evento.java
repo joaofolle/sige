@@ -3,9 +3,12 @@ package modelo;
 import java.util.Date;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -20,6 +23,7 @@ public class Evento implements Serializable {
     @Id
     @GeneratedValue
     private int id;
+    
     @NotEmpty
     private String tipoEvento;
     @NotEmpty
@@ -34,30 +38,33 @@ public class Evento implements Serializable {
     private String segundoautor;
     @NotEmpty
     private String lugar;
-
+    
     @Temporal(TemporalType.DATE)
     private Date dataEvento;
-
+    
     @Temporal(TemporalType.DATE)
     private Date inicioEvento;
-
+    
     @Temporal(TemporalType.DATE)
     private Date fimEvento;
-
+    
     @Temporal(TemporalType.TIME)
     private Date horario;
+    
+    @ManyToMany(cascade = CascadeType.ALL)
+        @JoinTable(name = "Palestra",
+            joinColumns = @JoinColumn(name = "evento_id"),
+            inverseJoinColumns = @JoinColumn(name = "usuario_id"))
+    private List<Usuario> evento;
 
-    @ManyToMany(mappedBy = "usuario")
-    private List<Usuario> listUsuario;
-
-    public List<Usuario> getListUsuario() {
-        return listUsuario;
+    public List<Usuario> getEvento() {
+        return evento;
     }
 
-    public void setListUsuario(List<Usuario> listUsuario) {
-        this.listUsuario = listUsuario;
-    }
-
+    public void setEvento(List<Usuario> evento) {
+        this.evento = evento;
+    }   
+    
     public String getSegundoautor() {
         return segundoautor;
     }
@@ -153,4 +160,5 @@ public class Evento implements Serializable {
     public void setDataEvento(Date dataEvento) {
         this.dataEvento = dataEvento;
     }
+
 }
