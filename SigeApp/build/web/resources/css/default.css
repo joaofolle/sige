@@ -178,7 +178,7 @@ address{
     width: calc(100% - 205px);  
     text-align: center;
     text-transform: uppercase;
-    
+
 }
 .repeat-home-titulo h1{
     font-family: 'Sigmar One', cursive;
@@ -188,7 +188,7 @@ address{
 .repeat-home-titulo p{
     font-family: 'Slabo 27px', serif;
     font-size: 20pt;
-   
+
 }
 .nome{
     text-align: right;

@@ -32,7 +32,7 @@ public class Usuario implements Serializable {
 
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
-    
+
     @ManyToMany
     @JoinTable(name = "Palestra",
             joinColumns = @JoinColumn(name = "usuario_id"),
@@ -47,7 +47,6 @@ public class Usuario implements Serializable {
         this.listEvento = listEvento;
     }
 
-        
     public int getId() {
         return id;
     }
@@ -127,6 +126,5 @@ public class Usuario implements Serializable {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
 
 }
