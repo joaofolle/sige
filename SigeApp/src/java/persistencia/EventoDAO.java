@@ -9,7 +9,7 @@ public class EventoDAO {
     
     public EventoDAO() {
         sessao = HibernateUtil.getSessionFactory().getCurrentSession();
-        sessao.beginTransaction();
+        //sessao.beginTransaction();
     }
     
     public void salvar(Evento e) {
@@ -31,6 +31,6 @@ public class EventoDAO {
     } 
     
     public void encerrar() {
-        sessao.getTransaction().commit();
+        //sessao.getTransaction().commit();
     }
 }
