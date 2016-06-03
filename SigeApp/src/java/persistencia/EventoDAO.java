@@ -5,31 +5,32 @@ import modelo.Evento;
 import org.hibernate.Session;
 
 public class EventoDAO {
-
     private Session sessao;
-
+    
     public EventoDAO() {
         sessao = HibernateUtil.getSessionFactory().getCurrentSession();
-        sessao.beginTransaction();
+        //sessao.beginTransaction();
     }
-
+    
     public void salvar(Evento e) {
         sessao.saveOrUpdate(e);
+        //sessao.merge(e);
+        
     }
-
+    
     public Evento carregar(int id) {
         return (Evento) sessao.load(Evento.class, id);
     }
-
+    
     public void remover(Evento e) {
         sessao.delete(e);
     }
-
+    
     public List<Evento> listar() {
         return sessao.createCriteria(Evento.class).list();
-    }
-
+    } 
+    
     public void encerrar() {
-        sessao.getTransaction().commit();
+        //sessao.getTransaction().commit();
     }
 }

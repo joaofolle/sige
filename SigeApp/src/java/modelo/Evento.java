@@ -3,15 +3,16 @@ package modelo;
 import java.util.Date;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Future;
-import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.ManyToAny;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -22,57 +23,48 @@ public class Evento implements Serializable {
     @Id
     @GeneratedValue
     private int id;
+    
     @NotEmpty
     private String tipoEvento;
     @NotEmpty
-    @NotNull(message = "O campo deve ser preenchido.")
     private String tituloEvento;
     @NotEmpty
-    @NotNull(message = "O campo deve ser preenchido.")
     private String trilhaEvento;
     @NotEmpty
-    @NotNull(message = "O campo deve ser preenchido.")
     private String descricaoEvento;
     @NotEmpty
-    @NotNull(message = "O campo deve ser preenchido.")
     private String autor;
 //  pode ficar vazio
     private String segundoautor;
     @NotEmpty
-    @NotNull(message = "O campo deve ser preenchido.")
     private String lugar;
-    @NotNull(message = "O campo deve ser preenchido.")
-
+    
     @Temporal(TemporalType.DATE)
     private Date dataEvento;
-    @Future
-    @NotNull(message = "O campo deve ser preenchido.")
-
+    
     @Temporal(TemporalType.DATE)
     private Date inicioEvento;
-    @Future
-    @NotNull(message = "O campo deve ser preenchido.")
-
+    
     @Temporal(TemporalType.DATE)
     private Date fimEvento;
-    @Future
-    @NotNull(message = "O campo deve ser preenchido.")
-
+    
     @Temporal(TemporalType.TIME)
     private Date horario;
-    @NotNull(message = "O campo deve ser preenchido.")
+    
+    @ManyToMany(cascade = CascadeType.ALL)
+        @JoinTable(name = "Palestra",
+            joinColumns = @JoinColumn(name = "evento_id"),
+            inverseJoinColumns = @JoinColumn(name = "usuario_id"))
+    private List<Usuario> evento;
 
-    @ManyToMany(mappedBy = "usuario")
-    private List<Usuario> listUsuario;
-
-    public List<Usuario> getListUsuario() {
-        return listUsuario;
+    public List<Usuario> getEvento() {
+        return evento;
     }
 
-    public void setListUsuario(List<Usuario> listUsuario) {
-        this.listUsuario = listUsuario;
-    }
-
+    public void setEvento(List<Usuario> evento) {
+        this.evento = evento;
+    }   
+    
     public String getSegundoautor() {
         return segundoautor;
     }
@@ -168,4 +160,5 @@ public class Evento implements Serializable {
     public void setDataEvento(Date dataEvento) {
         this.dataEvento = dataEvento;
     }
+
 }

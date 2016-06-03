@@ -34,11 +34,22 @@
                         <p:outputLabel for="txtData" value="Data: "/>
                         <h:outputText id="txtData" value="#{EventoBean.evento.dataEvento}"/>
                         <f:facet name="footer">
-                            <p:button value="Voltar" outcome="ListaEvento" style="width: 99%"/>
+                        <p:button value="Voltar" outcome="ListaEvento" style="width: 99%"/>
 
                         </f:facet>
-                    </p:panelGrid>
+                        </p:panelGrid>
+                        <p:dataTable var="participantes" value="#{EventoBean.evento.evento}">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{participantes.id}" />
+                        </p:column>
+ 
+                        <p:column headerText="Nome">
+                            <h:outputText value="#{participantes.nome}" />
+                        </p:column>
 
+                        </p:dataTable>
+                        
+                    
                 </h:form>
             </ui:define>
 
