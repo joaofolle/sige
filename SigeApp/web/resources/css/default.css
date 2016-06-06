@@ -72,10 +72,13 @@ address{
     color: black;
     box-shadow: none!important;
 }
-#formulario{
+#formulario{    
     margin: auto;
     border: 2px solid #2B2F3A;
     box-shadow: 10px 10px 5px #888888;
+}
+.form-box{
+    min-width: 500px;
 }
 #formulario textarea {   
     height: 1.8em; 
@@ -95,7 +98,7 @@ address{
 
 }
 #formulario  input[type='text']:focus{
-
+background: #D2D2D2;
 }
 .ui-outputlabel{
 
@@ -203,4 +206,10 @@ address{
 @keyframes nome {
     from {background-color: red;}
     to {background-color: trasparent;}
+}
+.id-login{
+    color: #ffffff;
+    text-transform: uppercase;
+    position: absolute;
+    top: 0;
 }

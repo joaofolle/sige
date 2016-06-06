@@ -15,7 +15,7 @@
             </ui:define>
 
             <ui:define name="conteudo">
-                <div class="nome" >Logado como:  #{loginBean.usuario.nome} </div>
+
                 <p:messages closable="true"/>
                 <h:form prependId="false">
 
@@ -32,13 +32,15 @@
                         <p:column headerText="Descrição">
                             #{evento.descricaoEvento}
                         </p:column>
-                        <p:column headerText="Ações" width="200" style="text-align: center">
+                        <p:column headerText="Ações" width="400" style="text-align: center">
                             <p:commandButton ajax="false" title="Visualizar" icon="ui-icon-search" actionListener="#{EventoBean.carregar(evento.id)}" action="evento1"/>
                             <p:commandButton ajax="false" title="Remover" icon="ui-icon-trash" actionListener="#{EventoBean.remover(evento)}" onclick="PF:confirm('Tem certeza?')"/>                            
                             <p:commandButton ajax="false" title="Participar" icon="ui-icon-check" action="#{EventoBean.adicionar(evento, loginBean.usuario)}"/>
+                            <p:commandButton ajax="false" title="Mapa" icon="ui-icon-search" actionListener="#{EventoBean.carregar(evento.id)}" action="localizacaoMapa.jsp"/>                            
                         </p:column>
                     </p:dataTable>
                 </h:form>
+                
             </ui:define>
 
         </ui:composition>

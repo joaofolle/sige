@@ -1,3 +1,6 @@
+/*menu js*/
+
+
 ( function( $ ) {
 $( document ).ready(function() {
 $('#cssmenu').prepend('<div id="indicatorContainer"><div id="pIndicator"><div id="cIndicator"></div></div></div>');
