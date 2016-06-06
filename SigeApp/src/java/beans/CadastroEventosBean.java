@@ -17,11 +17,12 @@ import persistencia.EventoDAO;
 @RequestScoped
 public class CadastroEventosBean {
 
+    //private Usuario usuario = new Usuario();
     private Evento evento = new Evento();
     private EventoDAO dao = new EventoDAO();
     private List<Evento> listaEventos;
-    private List<Evento> listaEventosUsuarios = new ArrayList<>();
-    private List<Usuario> lista2EventosUsuarios = new ArrayList<>();
+   //private List<Evento> listaEventosUsuarios = new ArrayList<>();
+   //private List<Usuario> lista2EventosUsuarios = new ArrayList<>();
 
     public CadastroEventosBean() {
         listaEventos = dao.listar();
@@ -41,9 +42,8 @@ public class CadastroEventosBean {
 
     public void adicionar(Evento evento,Usuario usuario){
         evento.getEvento().add(usuario);
-        //lista2EventosUsuarios.add(usuario);
-        //evento.setEvento(lista2EventosUsuarios);
-        
+        //getLista2EventosUsuarios().add(usuario);
+        //evento.setEvento(getLista2EventosUsuarios());
         dao.salvar(evento);
         enviarMensagem(FacesMessage.SEVERITY_INFO, "Sua inscrição foi realizada com sucesso no(a)  "+evento.getTipoEvento()+" : "+evento.getTituloEvento()+" .");
         evento = new Evento();
@@ -77,7 +77,7 @@ public class CadastroEventosBean {
     public void encerrar() {
         dao.encerrar();
     }
-
+/*
     public List<Evento> getListaEventosUsuarios() {
         return listaEventosUsuarios;
     }
@@ -85,4 +85,13 @@ public class CadastroEventosBean {
     public void setListaEventosUsuarios(List<Evento> listaEventosUsuarios) {
         this.listaEventosUsuarios = listaEventosUsuarios;
     }
+
+    public List<Usuario> getLista2EventosUsuarios() {
+        return lista2EventosUsuarios;
+    }
+
+    public void setLista2EventosUsuarios(List<Usuario> lista2EventosUsuarios) {
+        this.lista2EventosUsuarios = lista2EventosUsuarios;
+    }
+*/
 }

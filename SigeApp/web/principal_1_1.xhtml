@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templatesigeapp.xhtml">
+
+            <ui:define name="title">
+                Principal
+            </ui:define>
+
+            <ui:define name="conteudo">
+                <div class="center">
+                    <div class="nome"> Olá #{loginBean.usuario.nome} </div>
+                    
+                    <p:messages/>
+                    <h:form prependId="false">
+                        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                        <p:panelGrid columns="1" id="formulario" >
+                        <f:facet name="header">
+                            <p:commandButton ajax="false" value="Cadastrar Evento" action="CadastroDeEvento"/>
+                            <p:commandButton ajax="false" value="Sair" action="index"/>
+                        </f:facet>
+                            <h:form prependId="false">
+                        <p:dataTable id="datatable1" value="#{EventoBean.listaEventos}" var="evento1" rows="3" paginator="true"  >
+                        <f:facet name="header">
+                            Lista Completa de Eventos
+                        </f:facet>
+                        <p:column  headerText="Data(s) Evento(s)" sortBy="#{evento1.dataEvento}"  width="200">
+                            #{evento1.dataEvento}
+                        </p:column>
+                        <p:column headerText="Eventos" sortBy="#{evento1.tituloEvento}" filterBy="#{evento1.tituloEvento}">
+                            #{evento1.tituloEvento}
+                        </p:column>
+                        <p:column headerText="Descrição">
+                            #{evento1.descricaoEvento}
+                        </p:column>
+                        <p:column headerText="Ações" width="200" style="text-align: center">
+                            <p:commandButton ajax="false" title="Visualizar" icon="ui-icon-search" actionListener="#{EventoBean.carregar(evento1.id)}" action="evento1"/>
+                            <p:commandButton ajax="false" title="Participar" icon="ui-icon-check" action="#{EventoBean.adicionar(evento, loginBean.usuario)}"/>
+                        </p:column>
+                            </p:dataTable>
+                            </h:form>
+                    <h:form>
+                        
+                        
+                        <p:dataTable id="datatable1" value="#{loginBean.setIdUsuario(loginBean.usuario.id)}" var="evento" rows="3" paginator="true"  >
+                        <f:facet name="header">
+                            Eventos que Gerencio
+                        </f:facet>
+                            <p:column  headerText="Data(s) Evento(s)" sortBy="#{evento.dataEvento}"  width="200">
+                            #{evento}
+                        </p:column>
+                        <p:column headerText="Eventos" sortBy="#{evento.tituloEvento}" filterBy="#{evento.tituloEvento}">
+                            #{evento.tituloEvento}
+                        </p:column>
+                        <p:column headerText="Descrição">
+                            #{evento.descricaoEvento}
+                        </p:column>
+                        <p:column headerText="Ações" width="200" style="text-align: center">
+                            <p:commandButton ajax="false" title="Visualizar" icon="ui-icon-search" actionListener="#{EventoBean.carregar(evento.id)}" action="evento1"/>
+                            <p:commandButton ajax="false" title="Remover" icon="ui-icon-trash" actionListener="#{EventoBean.remover(evento)}" onclick="PF:confirm('Tem certeza?')"/>                            
+                            <p:commandButton ajax="false" title="Participar" icon="ui-icon-check" action="#{EventoBean.adicionar(evento, loginBean.usuario)}"/>
+                        </p:column>
+                        </p:dataTable>
+                            </h:form>
+                        <br/><br/><br/><br/><br/><br/>
+                        </p:panelGrid>
+                    </h:form>
+                </div>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

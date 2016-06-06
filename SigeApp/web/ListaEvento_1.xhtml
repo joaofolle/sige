@@ -19,18 +19,16 @@
                 <p:messages closable="true"/>
                 <h:form prependId="false">
 
+                  
                     <p:dataTable id="datatable" value="#{EventoBean.listaEventos}" var="evento" rows="3" paginator="true"  >
                         <f:facet name="header">
-                            Lista Completa de Eventos
+                            Lista Completa de usuarios
                         </f:facet>
-                        <p:column  headerText="Data(s) Evento(s)" sortBy="#{evento.dataEvento}"  width="200">
-                            #{evento.dataEvento}
-                        </p:column>
-                        <p:column headerText="Eventos" sortBy="#{evento.tituloEvento}" filterBy="#{evento.tituloEvento}">
-                            #{evento.tituloEvento}
+                        <p:column  headerText="Participante(s)"  width="200">
+                            #{evento.evento.listIterator()}
                         </p:column>
                         <p:column headerText="Descrição">
-                            #{evento.descricaoEvento}
+                            #{evento.id}
                         </p:column>
                         <p:column headerText="Ações" width="200" style="text-align: center">
                             <p:commandButton ajax="false" title="Visualizar" icon="ui-icon-search" actionListener="#{EventoBean.carregar(evento.id)}" action="evento1"/>

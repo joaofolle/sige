@@ -30,6 +30,10 @@ public class EventoDAO {
         return sessao.createCriteria(Evento.class).list();
     } 
     
+    public List<Evento> listarEventosDeUsuarios(int id) {
+        return sessao.createCriteria(Evento.class,String.valueOf(id)).list();
+    }
+    
     public void encerrar() {
         //sessao.getTransaction().commit();
     }

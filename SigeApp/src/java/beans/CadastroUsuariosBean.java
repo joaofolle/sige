@@ -60,6 +60,14 @@ public class CadastroUsuariosBean {
         enviarMensagem(FacesMessage.SEVERITY_INFO, "Usuário removido com sucesso");
     }
     
+    public void autorCriadorEvento(Usuario usuario,Evento evento){
+        usuario.getUsuario().add(evento);
+        dao.salvar(usuario);
+        //enviarMensagem(FacesMessage.SEVERITY_INFO, "Evento criado com sucesso !!!");
+        usuario = new Usuario();
+        listaUsuarios = dao.listar();
+    }
+    
     private void enviarMensagem(Severity sev, String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(sev, msg, ""));

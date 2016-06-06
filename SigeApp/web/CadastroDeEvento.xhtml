@@ -15,6 +15,8 @@
             </ui:define>
 
             <ui:define name="conteudo">
+                
+                <br/><br/>
                 <h:form prependId="false">
                     <br/>
                     <p:messages closable="true"  style="width: 600px; margin: auto;font-size: 12px" />
@@ -29,9 +31,9 @@
                         <p:outputLabel for="txtlocal" value="Local do Evento:"/>
                         <p:inputText id="txtlocal" label="tituloEvento" maxlength="100" size="40" value="#{EventoBean.evento.lugar}" required="true"/>
 
-                        <p:outputLabel for="txtAutor" value="Autor(1): " />
-                        <p:inputText id="txtAutor" label="Autor" maxlength="100" size="40" value="#{EventoBean.evento.autor}" required="true"/>
-
+                        <p:outputLabel for="txtAutor" value="Autor(1)" />
+                        <p:inputText id="txtAutor" label="Autor" maxlength="100" size="40" value="#{EventoBean.evento.autor}"/>
+                        
                         <p:outputLabel for="txtAutores" value="Autor(2): " />
                         <p:inputText id="txtAutores" label="Autor" maxlength="100" size="40" value="#{EventoBean.evento.segundoautor}" />
 
@@ -62,8 +64,8 @@
 
 
                         <f:facet name="footer">
-                            <p:button value="Voltar" outcome="principal" style="width: 49.5%;margin-bottom: 5px;"/>
-                            <p:commandButton ajax="false" value="Criar Evento" actionListener="#{EventoBean.salvar()}"  style="width: 49.5%;float: right"/>
+                            <p:button value="Voltar" outcome="principal_1_1" style="width: 49.5%;margin-bottom: 5px;"/>
+                            <p:commandButton ajax="false" value="Criar Evento"  actionListener="#{EventoBean.evento.setIdUsuarioCriador(loginBean.usuario.id)}" action="#{EventoBean.salvar()}" style="width: 49.5%;float: right"/>
                         </f:facet>
                     </p:panelGrid>
 
