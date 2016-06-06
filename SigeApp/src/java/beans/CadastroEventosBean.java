@@ -23,7 +23,7 @@ public class CadastroEventosBean {
     private List<Evento> listaEventos;
    //private List<Evento> listaEventosUsuarios = new ArrayList<>();
    //private List<Usuario> lista2EventosUsuarios = new ArrayList<>();
-
+    private String listaEmails;
     public CadastroEventosBean() {
         listaEventos = dao.listar();
     }
@@ -58,10 +58,31 @@ public class CadastroEventosBean {
         listaEventos = dao.listar();
     }
 
-    public void carregar(int id) {
+//    public void carregar(int id) {
+//        evento = dao.carregar(id);
+//    }
+public void carregar(int id) {
         evento = dao.carregar(id);
-    }
+        /* LISTA DE EMAILS */
+        int iteracoes = evento.getEvento().size();
+        Usuario usuario;
+        StringBuilder stb = new StringBuilder();
+        for (int i = 0; i < iteracoes; i++) {
+            usuario = evento.getEvento().get(i);
+            if (i == (iteracoes - 1)) {
+                stb.append(usuario.getEmail());
+            } else {
+                stb.append(usuario.getEmail()).append(", ");
+            }
 
+        }
+        listaEmails = stb.toString();
+        System.out.println("LISTA DE EMAILS");
+        System.out.println(stb.toString());
+        System.out.println("STRING LISTA EMAILS");
+        System.out.println(listaEmails);
+
+    }
     public void remover(Evento evento) {
         dao.remover(evento);
         enviarMensagem(FacesMessage.SEVERITY_INFO, "Evento removido com sucesso");
@@ -77,6 +98,7 @@ public class CadastroEventosBean {
     public void encerrar() {
         dao.encerrar();
     }
+    
 /*
     public List<Evento> getListaEventosUsuarios() {
         return listaEventosUsuarios;
@@ -94,4 +116,12 @@ public class CadastroEventosBean {
         this.lista2EventosUsuarios = lista2EventosUsuarios;
     }
 */
+
+    public String getListaEmails() {
+        return listaEmails;
+    }
+
+    public void setListaEmails(String listaEmails) {
+        this.listaEmails = listaEmails;
+    }
 }

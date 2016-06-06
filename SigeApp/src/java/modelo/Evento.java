@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Past;
 import org.hibernate.annotations.ManyToAny;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -24,31 +26,31 @@ public class Evento implements Serializable {
     @GeneratedValue
     private int id;
     
-    @NotEmpty
+    @NotEmpty( message = "Erro ao informar dados" )
     private String tipoEvento;
-    @NotEmpty
+    @NotEmpty( message = "Erro ao informar dados" )
     private String tituloEvento;
-    @NotEmpty
+    @NotEmpty( message = "Erro ao informar dados" )
     private String trilhaEvento;
-    @NotEmpty
+    @NotEmpty( message = "Erro ao informar dados" )
     private String descricaoEvento;
-    @NotEmpty
+    @NotEmpty( message = "Erro ao informar dados" )
     private String autor;
 //  pode ficar vazio
     private String segundoautor;
     private int idUsuarioCriador;
-    @NotEmpty
+    @NotEmpty( message = "Erro ao informar dados" )
     private String lugar;
-    
+    @Future(message = "DATA INVÁLIDA")
     @Temporal(TemporalType.DATE)
     private Date dataEvento;
-    
+    @Future(message = "DATA INVÁLIDA")
     @Temporal(TemporalType.DATE)
     private Date inicioEvento;
-    
+    @Future(message = "DATA INVÁLIDA")
     @Temporal(TemporalType.DATE)
     private Date fimEvento;
-    
+    @Future(message = "DATA INVÁLIDA")
     @Temporal(TemporalType.TIME)
     private Date horario;
     

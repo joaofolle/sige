@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templatesigeapp.xhtml">
+
+            <ui:define name="title">
+                Lista de Eventos
+            </ui:define>
+
+            <ui:define name="conteudo">
+                
+                <p:messages closable="true"/>
+                <h:form prependId="false">
+
+                  
+                    <p:dataTable id="datatable" value="#{EventoBean.listaEventos}" var="evento" rows="3" paginator="true"  >
+                        <f:facet name="header">
+                            Lista Completa de usuarios
+                        </f:facet>
+                        <p:column  headerText="Participante(s)"  width="200">
+                            #{evento.evento.listIterator()}
+                        </p:column>
+                        <p:column headerText="Descrição">
+                            #{evento.id}
+                        </p:column>
+                        <p:column headerText="Ações" width="200" style="text-align: center">
+                            <p:commandButton ajax="false" title="Visualizar" icon="ui-icon-search" actionListener="#{EventoBean.carregar(evento.id)}" action="evento1"/>
+                            <p:commandButton ajax="false" title="Remover" icon="ui-icon-trash" actionListener="#{EventoBean.remover(evento)}" onclick="PF:confirm('Tem certeza?')"/>                            
+                            <p:commandButton ajax="false" title="Participar" icon="ui-icon-check" action="#{EventoBean.adicionar(evento, loginBean.usuario)}"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

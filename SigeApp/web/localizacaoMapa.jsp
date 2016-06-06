@@ -29,7 +29,7 @@
                 }
                 #floating-panel {
                     position: fixed;
-                    top: 50px;
+                    top: -150px;
                     left: 25%;
                     z-index: 5;                   
                 }

@@ -20,12 +20,12 @@
                     <p:growl life="8000"/>
                     <p:panelGrid columns="2" id="formulario" class="email-box" >
                         <f:facet name="header">
-                            Envio de e-mail para participantes do Evento
+                            Envio de e-mail 
                         </f:facet>
                         <h:outputText value="Assunto:"/>
                         <h:inputText value="#{mail.ad}" style="width: 100%"/>
                         <h:outputText value="Destinatario(s):"/>
-                        <h:inputText value="#{mail.mailAdresi}" style="width: 100%"/>
+                        <h:inputText value="#{EventoBean.listaEmails}" style="width: 100%"/>
                         <h:outputText value="Conteudo"/>
                         <h:inputTextarea value="#{mail.gorus}" style="width: 100%"/>
                         <f:facet name="footer">
