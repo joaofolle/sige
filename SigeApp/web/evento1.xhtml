@@ -54,12 +54,6 @@
                         <p:column  headerText="Participante(s)">
                             #{evento.nome}
                         </p:column>
-                        <p:column headerText="Ações" width="200" style="text-align: center">
-                            <p:commandButton ajax="false" title="Visualizar" icon="ui-icon-search" actionListener="#" action="#"/>
-                            <p:commandButton ajax="false" title="Enviar e-mail" icon="ui-icon-email" actionListener="#" onclick="PF:confirm('Deseja enviar e-mail ?')"/>                            
-                            <p:commandButton ajax="false" title="Presença" icon="ui-icon-check" action="# {EventoBean.adicionar(evento, loginBean.usuario)}"/>
-                            
-                        </p:column>
                         <p:column headerText="Presença" width="100" style="text-align: center">
                             <p:selectBooleanCheckbox id="chkPresenca" value="#{evento.presenca}"/>
                         </p:column>
