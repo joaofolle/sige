@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./templatesigeapp.xhtml">
+
+            <ui:define name="title">
+                Envio de e-mail
+            </ui:define>
+
+            <ui:define name="conteudo">
+                <br/>
+                <h:form prependId="false">
+                    <p:growl life="8000"/>
+                    <p:panelGrid columns="2" id="formulario" class="email-box" >
+                        <f:facet name="header">
+                            Envio de e-mail para participantes do Evento
+                        </f:facet>
+                        <h:outputText value="Assunto:"/>
+                        <h:inputText value="#{mail.ad}" style="width: 100%"/>
+                        <h:outputText value="Destinatario(s):"/>
+                        <h:inputText value="#{mail.mailAdresi}" style="width: 100%"/>
+                        <h:outputText value="Conteudo"/>
+                        <h:inputTextarea value="#{mail.gorus}" style="width: 100%"/>
+                        <f:facet name="footer">
+                            <p:commandButton ajax="false" action="#{mail.mailAt()}" value="ENVIAR"/>
+                            <a style="float: right;margin: 10px;" href="javascript:window.history.go(-1)">VOLTAR</a>
+                        </f:facet>
+                    </p:panelGrid>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
