@@ -52,8 +52,8 @@ public class Mail {
 
     public void mailAt() throws MessagingException {
 
-        String username = ""; 
-        String password = "";
+        final String username = ""; 
+        final String password = "";
 
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");

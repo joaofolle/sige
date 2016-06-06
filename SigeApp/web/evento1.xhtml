@@ -19,7 +19,7 @@
                 <h:form prependId="false">
                     <p:panelGrid columns="2" id="formulario" >
                         <f:facet name="header" >
-                            <p>EVENTO</p>    <p:commandButton ajax="false" title="Participantes" type="button" onclick="PF('dlgParticipante').show();"/>
+                            <p>EVENTO</p>    <p:commandButton ajax="false"  value="Participantes" title="Participantes" type="button" onclick="PF('dlgParticipante').show();"/>
                         </f:facet>
                         <p:outputLabel for="txtTipo" value="Tipo de Evento: "/>
                         <h:outputText id="txtTipo" value="#{EventoBean.evento.tipoEvento}"/>
@@ -35,20 +35,21 @@
                         <h:outputText id="txtData" value="#{EventoBean.evento.dataEvento}"/>
                         <f:facet name="footer">
                             <p:button value="Voltar" outcome="ListaEvento" style="width: 99%"/>
+                            <p:commandButton ajax="false" value="Ver no Mapa" action="localizacaoMapa.jsp"/>
                         </f:facet>
                     </p:panelGrid>
                 </h:form>
             </ui:define>
               
             <ui:define name="dialogos">
-            <p:dialog header="Faça Login" widgetVar="dlgParticipante" modal="true">
+            <p:dialog header="Lista de Participantes" widgetVar="dlgParticipante" modal="true">
                                 <div class="center">             
                     <p:growl/>
                     <h:form>
                         <h:panelGrid id="formulario" bgcolor="#2B2F3A" columns="1" cellpadding="10" cellspacing="5" headerClass="whit" >
                         <p:dataTable id="datatable" value="#{EventoBean.evento.evento}" var="evento" rows="3" paginator="true"  >
                         <f:facet name="header">
-                            Lista Completa de usuarios inscritos neste(a) #{EventoBean.evento.tipoEvento}
+                            Lista de Participantes
                         </f:facet>
                         <p:column  headerText="Participante(s)">
                             #{evento.nome}
@@ -56,13 +57,17 @@
                         <p:column headerText="Ações" width="200" style="text-align: center">
                             <p:commandButton ajax="false" title="Visualizar" icon="ui-icon-search" actionListener="#" action="#"/>
                             <p:commandButton ajax="false" title="Enviar e-mail" icon="ui-icon-email" actionListener="#" onclick="PF:confirm('Deseja enviar e-mail ?')"/>                            
-                            <p:commandButton ajax="false" title="Presença" icon="ui-icon-check" action="# {EventoBean.adicionar(evento, loginBean.usuario)}"/>
+       
                             
                         </p:column>
                         <p:column headerText="Presença" width="100" style="text-align: center">
                             <p:selectBooleanCheckbox id="chkPresenca" value="#{evento.presenca}"/>
                         </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton ajax="false" value="Enviar e-mail" title="email" actionListener="#{EventoBean.carregar(evento.email)}" action="email"/>
+                        </f:facet>
                         </p:dataTable>
+                            
                         </h:panelGrid>
                         <br/><br/><br/>
                     </h:form>
