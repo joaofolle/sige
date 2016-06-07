@@ -55,8 +55,8 @@
         <body >
             <div id="floating-panel">
                 
-                <h:inputText id="address"  value="otto niemeyer, porto alegre"/> 
-                <h:inputText value="#{EventoBean.evento.lugar}"/>
+                <h:inputText id="address"  value="#{EventoBean.evento.lugar}"/> 
+                
             </div>
             <a class="btn-voltar" href="javascript:window.history.go(-1)">VOLTAR</a>
             <div id="map"></div>

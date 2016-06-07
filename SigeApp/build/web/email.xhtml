@@ -18,22 +18,27 @@
                 <br/>
                 <h:form prependId="false">
                     <p:growl life="8000"/>
-                    <p:panelGrid columns="2" id="formulario" class="email-box" >
+                    <p:panelGrid columns="1" id="formulario" class="email-box" >
                         <f:facet name="header">
                             Envio de e-mail 
                         </f:facet>
                         <h:outputText value="Assunto:"/>
-                        <h:inputText value="#{mail.ad}" style="width: 100%"/>
+                        <h:inputText value="#{mail.assunto}" style="width: 100%"/>
                         <h:outputText value="Destinatario(s):"/>
-                        <h:inputText value="#{EventoBean.listaEmails}" style="width: 100%"/>
+                        <h:inputText id="destino" value="#{mail.destinatarios}" style="width: 100%"/>
                         <h:outputText value="Conteudo"/>
-                        <h:inputTextarea value="#{mail.gorus}" style="width: 100%"/>
+                        <h:inputTextarea value="#{mail.conteudoEmail}" style="width: 100%"/>
                         <f:facet name="footer">
                             <p:commandButton ajax="false" action="#{mail.mailAt()}" value="ENVIAR"/>
                             <a style="float: right;margin: 10px;" href="javascript:window.history.go(-1)">VOLTAR</a>
                         </f:facet>
                     </p:panelGrid>
                 </h:form>
+                
+                <script type="text/javascript">
+                    document.getElementById('destino').value = '#{EventoBean.listaEmails}';
+                </script>
+                
             </ui:define>
 
         </ui:composition>

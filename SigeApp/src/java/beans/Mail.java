@@ -3,7 +3,7 @@ package beans;
 import java.util.Properties;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -15,35 +15,35 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class Mail {
 
-    String gorus="teste";
-    String ad="";
-    String mailAdresi="";
+    String conteudoEmail="teste";
+    String assunto="";
+    String destinatarios="";
 
-    public String getGorus() {
-        return gorus;
+    public String getConteudoEmail() {
+        return conteudoEmail;
     }
 
-    public void setGorus(String gorus) {
-        this.gorus = gorus;
+    public void setConteudoEmail(String conteudoEmail) {
+        this.conteudoEmail = conteudoEmail;
     }
 
-    public String getAd() {
-        return ad;
+    public String getAssunto() {
+        return assunto;
     }
 
-    public void setAd(String ad) {
-        this.ad = ad;
+    public void setAssunto(String assunto) {
+        this.assunto = assunto;
     }
 
-    public String getMailAdresi() {
-        return mailAdresi;
+    public String getDestinatarios() {
+        return destinatarios;
     }
 
-    public void setMailAdresi(String mailAdresi) {
-        this.mailAdresi = mailAdresi;
+    public void setDestinatarios(String destinatarios) {
+        this.destinatarios = destinatarios;
     }
     private void enviarMensagem(FacesMessage.Severity sev, String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -73,16 +73,19 @@ public class Mail {
 
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mailAdresi));
-            message.setSubject(ad);
-            message.setText(gorus);
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatarios));
+            message.setSubject(assunto);
+            message.setText(conteudoEmail);
             transport.connect();
             Transport.send(message, message.getRecipients(Message.RecipientType.TO));
             enviarMensagem(FacesMessage.SEVERITY_INFO, "E-mail enviado com sucesso");
+            setAssunto("");
+            setConteudoEmail("");
+            setDestinatarios("");            
             transport.close();
         } catch (MessagingException ex) {
-            enviarMensagem(FacesMessage.SEVERITY_INFO, "Erro ao tntar enviar E-mail");
-            System.err.println("hata: "+ex);
+            enviarMensagem(FacesMessage.SEVERITY_INFO, "Erro ao tentar enviar E-mail");
+            System.err.println("erro"+ex);
         }
     }
 
