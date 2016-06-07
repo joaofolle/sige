@@ -17,7 +17,7 @@
                 <p:dataTable value="#{EventoBean.listaEventos}" var="evento" rows="4" paginator="true">
                     <f:facet name="header" >
                             <p>Sistema de Gerenciamento de Eventos</p>
-                            <p:commandButton ajax="false" value="Entrar" action="#{loginBean.autenticar}" style="width: 49%;"/>
+                            <p:commandButton ajax="false" value="Entrar"  type="button" onclick="PF('dlgLogin').show();" style="width: 49%;"/>
                             <p:commandButton ajax="false" value="Criar Conta" action="CadastroDeUsuario" style="width: 49%;float: right"/>
                 </f:facet> 
                     <p:column headerText="Data(s)" sortBy="#{evento.dataEvento}" filterBy="#{evento.dataEvento}" width="120">

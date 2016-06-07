@@ -20,7 +20,7 @@
                     <p:panelGrid columns="2" id="formulario" >
                         <f:facet name="header" >
                             <p>EVENTO</p>    <p:commandButton ajax="false" value="Participantes" title="Participantes" type="button" onclick="PF('dlgParticipante').show();"/>
-                            <p:commandButton ajax="false" value="Ver no Mapa" action="localizacaoMapa.jsp"/>
+                            <p:commandButton ajax="false" value="Ver no Mapa" actionListener="#{EventoBean.carregar(1)}" action="localizacaoMapa.jsp"/>
                         </f:facet>
                         <p:outputLabel for="txtTipo" value="Tipo de Evento: "/>
                         <h:outputText id="txtTipo" value="#{EventoBean.evento.tipoEvento}"/>
@@ -49,7 +49,7 @@
                         <h:panelGrid id="formulario" bgcolor="#2B2F3A" columns="1" cellpadding="10" cellspacing="5" headerClass="whit" >
                         <p:dataTable id="datatable" value="#{EventoBean.evento.evento}" var="evento" rows="3" paginator="true"  >
                         <f:facet name="header">
-                            <p>Lista Participantes</p> <p:commandButton ajax="false" value="Enviar e-mail" title="email" actionListener="#{EventoBean.carregar(evento.id)}" action="email"/>
+                            <p>Lista Participantes</p> <p:commandButton ajax="false" value="Enviar e-mail" title="email" action="email"/>
                         </f:facet>
                         <p:column  headerText="Participante(s)">
                             #{evento.nome}

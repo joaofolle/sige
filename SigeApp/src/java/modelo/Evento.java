@@ -41,16 +41,16 @@ public class Evento implements Serializable {
     private int idUsuarioCriador;
     @NotEmpty( message = "Erro ao informar dados" )
     private String lugar;
-    @Future(message = "DATA INVÁLIDA")
+    //@Future(message = "DATA INVÁLIDA")
     @Temporal(TemporalType.DATE)
     private Date dataEvento;
-    @Future(message = "DATA INVÁLIDA")
+   // @Future(message = "DATA INVÁLIDA")
     @Temporal(TemporalType.DATE)
     private Date inicioEvento;
-    @Future(message = "DATA INVÁLIDA")
+   // @Future(message = "DATA INVÁLIDA")
     @Temporal(TemporalType.DATE)
     private Date fimEvento;
-    @Future(message = "DATA INVÁLIDA")
+    //@Future(message = "DATA INVÁLIDA")
     @Temporal(TemporalType.TIME)
     private Date horario;
     

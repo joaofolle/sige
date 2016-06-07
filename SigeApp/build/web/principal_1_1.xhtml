@@ -42,7 +42,7 @@
                         </p:column>
                         <p:column headerText="Ações" width="200" style="text-align: center">
                             <p:commandButton ajax="false" title="Visualizar" icon="ui-icon-search" actionListener="#{EventoBean.carregar(evento1.id)}" action="evento1"/>
-                            <p:commandButton ajax="false" title="Participar" icon="ui-icon-check" action="#{EventoBean.adicionar(evento, loginBean.usuario)}"/>
+                            <p:commandButton ajax="false" title="Participar" icon="ui-icon-check" action="#{EventoBean.adicionar(evento1, loginBean.usuario)}"/>
                             
                         </p:column>
                             </p:dataTable>
@@ -50,12 +50,12 @@
                     <h:form>
                         
                         
-                        <p:dataTable id="datatable1" value="#{loginBean.setIdUsuario(loginBean.usuario.id)}" var="evento" rows="3" paginator="true"  >
+                        <p:dataTable id="datatable1" value="#{usuarioBean.usuario.usuario}" var="evento" rows="3" paginator="true"  >
                         <f:facet name="header">
                             Eventos que Gerencio
                         </f:facet>
                             <p:column  headerText="Data(s) Evento(s)" sortBy="#{evento.dataEvento}"  width="200">
-                            #{evento}
+                            #{evento.dataEvento}
                         </p:column>
                         <p:column headerText="Eventos" sortBy="#{evento.tituloEvento}" filterBy="#{evento.tituloEvento}">
                             #{evento.tituloEvento}
@@ -64,9 +64,8 @@
                             #{evento.descricaoEvento}
                         </p:column>
                         <p:column headerText="Ações" width="200" style="text-align: center">
-                            <p:commandButton ajax="false" title="Visualizar" icon="ui-icon-search" actionListener="#{EventoBean.carregar(evento.id)}" action="evento1"/>
-                            <p:commandButton ajax="false" title="Remover" icon="ui-icon-trash" actionListener="#{EventoBean.remover(evento)}" onclick="PF:confirm('Tem certeza?')"/>                            
-                            <p:commandButton ajax="false" title="Participar" icon="ui-icon-check" action="#{EventoBean.adicionar(evento, loginBean.usuario)}"/>
+                            <p:commandButton ajax="false" title="Alterar" icon="ui-icon-pencil" actionListener="#{EventoBean.carregar(evento.id)}" action="evento1"/>
+                            <p:commandButton ajax="false" title="Remover" icon="ui-icon-trash" actionListener="#{EventoBean.remover(evento)}" /> <!--onclick="if!confirm('Tem certeza?')retunr false"-->                            
                         </p:column>
                         </p:dataTable>
                             </h:form>
