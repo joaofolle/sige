@@ -12,17 +12,18 @@ import modelo.Evento;
 import modelo.Usuario;
 import org.hibernate.mapping.Array;
 import persistencia.EventoDAO;
+import persistencia.UsuarioDAO;
 
 @ManagedBean(name = "EventoBean")
 @RequestScoped
 public class CadastroEventosBean {
 
     //private Usuario usuario = new Usuario();
+    private UsuarioDAO daoUsuario=new UsuarioDAO();
     private Evento evento = new Evento();
     private EventoDAO dao = new EventoDAO();
     private List<Evento> listaEventos;
-   //private List<Evento> listaEventosUsuarios = new ArrayList<>();
-   //private List<Usuario> lista2EventosUsuarios = new ArrayList<>();
+    private List<Usuario> listaUsuarios;
     private String listaEmails;
     public CadastroEventosBean() {
         listaEventos = dao.listar();
@@ -42,14 +43,22 @@ public class CadastroEventosBean {
 
     public void adicionar(Evento evento,Usuario usuario){
         evento.getEvento().add(usuario);
-        //getLista2EventosUsuarios().add(usuario);
-        //evento.setEvento(getLista2EventosUsuarios());
         dao.salvar(evento);
         enviarMensagem(FacesMessage.SEVERITY_INFO, "Sua inscrição foi realizada com sucesso no(a)  "+evento.getTipoEvento()+" : "+evento.getTituloEvento()+" .");
         evento = new Evento();
         listaEventos = dao.listar();
     }
     
+    public void autorCriadorEvento(Usuario usuario,Evento evento){
+        usuario.getUsuario().add(evento);
+        daoUsuario.salvar(usuario);
+        dao.salvar(evento);
+        enviarMensagem(FacesMessage.SEVERITY_INFO, "Evento criado com sucesso !!!");
+        usuario = new Usuario();
+        listaUsuarios = daoUsuario.listar();
+        evento = new Evento();
+        listaEventos = dao.listar();
+    }
     
     public void salvar() {
         dao.salvar(evento);

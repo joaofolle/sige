@@ -65,7 +65,7 @@
 
                         <f:facet name="footer">
                             <p:button value="Voltar" outcome="principal_1_1" style="width: 49.5%;margin-bottom: 5px;"/>
-                            <p:commandButton ajax="false" value="Criar Evento"   action="#{EventoBean.salvar()}" style="width: 49.5%;float: right"/>
+                            <p:commandButton ajax="false" value="Criar Evento"   actionListener="#{EventoBean.salvar()}" style="width: 49.5%;float: right"/>
                         </f:facet>
                     </p:panelGrid>
 

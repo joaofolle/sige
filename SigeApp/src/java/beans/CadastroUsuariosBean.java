@@ -59,7 +59,7 @@ public class CadastroUsuariosBean {
         dao.remover(usuario);
         enviarMensagem(FacesMessage.SEVERITY_INFO, "Usuário removido com sucesso");
     }
-    
+    /*
     public void autorCriadorEvento(Usuario usuario,Evento evento){
         usuario.getUsuario().add(evento);
         dao.salvar(usuario);
@@ -67,6 +67,7 @@ public class CadastroUsuariosBean {
         usuario = new Usuario();
         listaUsuarios = dao.listar();
     }
+    */
     
     private void enviarMensagem(Severity sev, String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
