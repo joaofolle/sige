@@ -16,8 +16,11 @@ import persistencia.UsuarioDAO;
 @ManagedBean(name="usuarioBean")
 @RequestScoped
 public class CadastroUsuariosBean {
+    private Evento evento = new Evento();
     private Usuario usuario = new Usuario();
     private UsuarioDAO dao = new UsuarioDAO();
+    private EventoDAO daoEvento = new EventoDAO();
+    
     private List<Usuario> listaUsuarios;
     private List<Evento> listaEventos;
 
@@ -44,30 +47,21 @@ public class CadastroUsuariosBean {
     public void setListaEventos(List<Evento> listaEventos) {
         this.listaEventos = listaEventos;
     }
-
+    
+    public void carregar(int id) {
+        usuario = dao.carregar(id);
+    }
+    
     public void salvar() {
         dao.salvar(usuario);
         enviarMensagem(FacesMessage.SEVERITY_INFO, "Usuário cadastrado com sucesso");
         usuario = new Usuario();
     }
     
-    public void carregar(int id) {
-        usuario = dao.carregar(id);
-    }
-    
     public void remover(Usuario usuario) {
         dao.remover(usuario);
         enviarMensagem(FacesMessage.SEVERITY_INFO, "Usuário removido com sucesso");
     }
-    /*
-    public void autorCriadorEvento(Usuario usuario,Evento evento){
-        usuario.getUsuario().add(evento);
-        dao.salvar(usuario);
-        //enviarMensagem(FacesMessage.SEVERITY_INFO, "Evento criado com sucesso !!!");
-        usuario = new Usuario();
-        listaUsuarios = dao.listar();
-    }
-    */
     
     private void enviarMensagem(Severity sev, String msg) {
         FacesContext context = FacesContext.getCurrentInstance();

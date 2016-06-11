@@ -35,7 +35,7 @@
                         <p:outputLabel for="txtData" value="Data: "/>
                         <h:outputText id="txtData" value="#{EventoBean.evento.dataEvento}"/>
                         <f:facet name="footer">
-                            <p:button value="Voltar" outcome="principal_1_1" style="width: 99%"/>
+                            <p:button value="Voltar"  onclick="javascript:window.history.go(-1)" style="width: 99%"/>
                         </f:facet>
                     </p:panelGrid>
                 </h:form>
@@ -49,7 +49,7 @@
                         <h:panelGrid id="formulario" bgcolor="#2B2F3A" columns="1" cellpadding="10" cellspacing="5" headerClass="whit" >
                         <p:dataTable id="datatable" value="#{EventoBean.evento.evento}" var="evento" rows="3" paginator="true"  >
                         <f:facet name="header">
-                            <p>Lista Participantes</p> <p:commandButton ajax="false" value="Enviar e-mail" title="email" action="email"/>
+                            <p align="left"><p:commandButton ajax="false" value="Enviar e-mail" title="email" action="email"/></p>    <p align="center">Lista Participantes</p> <p align="right"><p:commandButton ajax="false" value="Salvar Presensa" title="SalvarPresensa" action="#{EventoBean.salvar()}"/></p>
                         </f:facet>
                         <p:column  headerText="Participante(s)">
                             #{evento.nome}
@@ -60,7 +60,7 @@
                         </p:dataTable>
  
                         </h:panelGrid>
-                        <br/><br/><br/>
+                        
                     </h:form>
                 </div> 
             </p:dialog>

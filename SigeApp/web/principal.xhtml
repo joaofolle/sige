@@ -17,11 +17,39 @@
             <ui:define name="conteudo">
                 <div class="center">
                     
+                    
                     <p:messages/>
-                    <h:form>
-                        <p:commandButton ajax="false" value="Cadastrar Evento" action="CadastroDeEvento" styleClass="repeat-btn btn-size"/>
-                        <p:commandButton ajax="false" value="Inscrever-se em Evento" action="ListaEvento" styleClass="repeat-btn btn-size"/>
+                    <h:form prependId="false">
                         <br/><br/><br/><br/><br/><br/>
+                        <p:panelGrid columns="1" id="formulario" >
+                        <f:facet name="header">
+                            <p:commandButton ajax="false" value="Cadastrar Evento" action="CadastroDeEvento"/>
+                            <p:commandButton ajax="false" value="Sair" action="index"/>
+                        </f:facet>
+                            <h:form prependId="false">
+                        <p:dataTable id="datatable1" value="#{EventoBean.listaEventos}" var="evento1" rows="3" paginator="true"  >
+                        <f:facet name="header">
+                            Lista Completa de Eventos
+                        </f:facet>
+                        <p:column  headerText="Data(s) Evento(s)" sortBy="#{evento1.dataEvento}"  width="200">
+                            #{evento1.dataEvento}
+                        </p:column>
+                        <p:column headerText="Eventos" sortBy="#{evento1.tituloEvento}" filterBy="#{evento1.tituloEvento}">
+                            #{evento1.tituloEvento}
+                        </p:column>
+                        <p:column headerText="Descrição">
+                            #{evento1.descricaoEvento}
+                        </p:column>
+                        <p:column headerText="Ações" width="200" style="text-align: center">
+                            <p:commandButton ajax="false" title="Visualizar" icon="ui-icon-search" actionListener="#{EventoBean.carregar(evento1.id)}" action="detalhesDeEvento"/>
+                            <p:commandButton ajax="false" title="Participar" icon="ui-icon-check" action="#{EventoBean.adicionar(evento1, loginBean.usuario)}"/>
+                        </p:column>
+                            </p:dataTable>
+                            <br/><br/><br/>
+                            <p align="center"><p:commandButton ajax="false" value="Eventos que Gerencio >>" actionListener="#{EventoBean.autorCriadorEvento(loginBean.usuario)}"  action="eventosDoUsuario" style="width: 49%;"/></p>
+                            </h:form>
+                        <br/><br/><br/><br/><br/><br/>
+                        </p:panelGrid>
                     </h:form>
                 </div>
 

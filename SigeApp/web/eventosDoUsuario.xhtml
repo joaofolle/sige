@@ -20,14 +20,14 @@
                     
                     <p:messages/>
                     <h:form prependId="false">
-                        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                        
                         <p:panelGrid columns="1" id="formulario" >
                         <f:facet name="header">
                             <p:commandButton ajax="false" value="Cadastrar Evento" action="CadastroDeEvento"/>
                             <p:commandButton ajax="false" value="Sair" action="index"/>
                         </f:facet>
                             <h:form prependId="false">
-                        <p:dataTable id="datatable" value="#{EventoBean.listaEventos}" var="evento" rows="3" paginator="true"  >
+                                <p:dataTable id="datatable" value="#{EventoBean.listaEventosDoUsuario}" var="evento" rows="3" paginator="true"  >
                         <f:facet name="header">
                             Lista Completa de Eventos
                         </f:facet>
@@ -41,12 +41,13 @@
                             #{evento.descricaoEvento}
                         </p:column>
                         <p:column headerText="Ações" width="200" style="text-align: center">
-                            <p:commandButton ajax="false" title="Visualizar" icon="ui-icon-search" actionListener="#{EventoBean.carregar(evento.id)}" action="evento1"/>
-                            <p:commandButton ajax="false" title="Participar" icon="ui-icon-check" action="#{EventoBean.adicionar(evento, loginBean.usuario)}"/>
+                            <p:commandButton ajax="false" title="Detalhes" type="button" icon="ui-icon-search" actionListener="#{EventoBean.carregar(evento.id)}" action="detalhesDeEvento"/>
+                            <p:commandButton ajax="false" title="Remover" icon="ui-icon-trash" actionListener="#{EventoBean.remover(evento)}" onclick="PF:confirm('Tem certeza?')"/>
                         </p:column>
                             </p:dataTable>
                             </h:form>
-                        <br/><br/><br/><br/><br/><br/>
+                        
+                    
                         </p:panelGrid>
                     </h:form>
                 </div>

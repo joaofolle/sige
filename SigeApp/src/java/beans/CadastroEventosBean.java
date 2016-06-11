@@ -18,13 +18,14 @@ import persistencia.UsuarioDAO;
 @RequestScoped
 public class CadastroEventosBean {
 
-    //private Usuario usuario = new Usuario();
     private UsuarioDAO daoUsuario=new UsuarioDAO();
     private Evento evento = new Evento();
     private EventoDAO dao = new EventoDAO();
     private List<Evento> listaEventos;
+    private List<Evento> listaEventosDoUsuario;
     private List<Usuario> listaUsuarios;
     private String listaEmails;
+    
     public CadastroEventosBean() {
         listaEventos = dao.listar();
     }
@@ -40,37 +41,23 @@ public class CadastroEventosBean {
     public List<Evento> getListaEventos() {
         return listaEventos;
     }
-
-    public void adicionar(Evento evento,Usuario usuario){
-        evento.getEvento().add(usuario);
-        dao.salvar(evento);
-        enviarMensagem(FacesMessage.SEVERITY_INFO, "Sua inscrição foi realizada com sucesso no(a)  "+evento.getTipoEvento()+" : "+evento.getTituloEvento()+" .");
-        evento = new Evento();
-        listaEventos = dao.listar();
-    }
-    
-    public void autorCriadorEvento(Usuario usuario,Evento evento){
-        usuario.getUsuario().add(evento);
-        daoUsuario.salvar(usuario);
-        dao.salvar(evento);
-        enviarMensagem(FacesMessage.SEVERITY_INFO, "Evento criado com sucesso !!!");
-        usuario = new Usuario();
-        listaUsuarios = daoUsuario.listar();
-        evento = new Evento();
-        listaEventos = dao.listar();
-    }
-    
-    public void salvar() {
-        dao.salvar(evento);
-        enviarMensagem(FacesMessage.SEVERITY_INFO, "Evento cadastrado com sucesso");
-        evento = new Evento();
-        listaEventos = dao.listar();
+     public String getListaEmails() {
+        return listaEmails;
     }
 
-//    public void carregar(int id) {
-//        evento = dao.carregar(id);
-//    }
-public void carregar(int id) {
+    public void setListaEmails(String listaEmails) {
+        this.listaEmails = listaEmails;
+    }
+
+    public List<Evento> getListaEventosDoUsuario() {
+        return listaEventosDoUsuario;
+    }
+
+    public void setListaEventosDoUsuario(List<Evento> listaEventosDoUsuario) {
+        this.listaEventosDoUsuario = listaEventosDoUsuario;
+    }
+
+    public void carregar(int id) {
         evento = dao.carregar(id);
         /* LISTA DE EMAILS */
         int iteracoes = evento.getEvento().size();
@@ -90,12 +77,30 @@ public void carregar(int id) {
         System.out.println(stb.toString());
         System.out.println("STRING LISTA EMAILS");
         System.out.println(listaEmails);
-
     }
+    
+    public void salvar() {
+        dao.salvar(evento);
+        enviarMensagem(FacesMessage.SEVERITY_INFO, "Evento cadastrado com sucesso");
+        evento = new Evento();
+        listaEventos = dao.listar();
+    }
+    
     public void remover(Evento evento) {
         dao.remover(evento);
         enviarMensagem(FacesMessage.SEVERITY_INFO, "Evento removido com sucesso");
         listaEventos = dao.listar();
+    }
+    
+    public void adicionar(Evento evento,Usuario usuario){
+        evento.getEvento().add(usuario);
+        dao.salvar(evento);
+        enviarMensagem(FacesMessage.SEVERITY_INFO, "Sua inscrição foi realizada com sucesso no(a)  "+evento.getTipoEvento()+" : "+evento.getTituloEvento()+" .");
+        evento = new Evento();
+        listaEventos = dao.listar();
+    }
+    public void autorCriadorEvento(Usuario usuario){
+        setListaEventosDoUsuario(dao.carregarEventosDoUsuario(usuario.getId()));
     }
 
     private void enviarMensagem(Severity sev, String msg) {
@@ -106,31 +111,5 @@ public void carregar(int id) {
     @PreDestroy
     public void encerrar() {
         dao.encerrar();
-    }
-    
-/*
-    public List<Evento> getListaEventosUsuarios() {
-        return listaEventosUsuarios;
-    }
-
-    public void setListaEventosUsuarios(List<Evento> listaEventosUsuarios) {
-        this.listaEventosUsuarios = listaEventosUsuarios;
-    }
-
-    public List<Usuario> getLista2EventosUsuarios() {
-        return lista2EventosUsuarios;
-    }
-
-    public void setLista2EventosUsuarios(List<Usuario> lista2EventosUsuarios) {
-        this.lista2EventosUsuarios = lista2EventosUsuarios;
-    }
-*/
-
-    public String getListaEmails() {
-        return listaEmails;
-    }
-
-    public void setListaEmails(String listaEmails) {
-        this.listaEmails = listaEmails;
     }
 }
