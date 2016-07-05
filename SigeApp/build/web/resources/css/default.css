@@ -73,7 +73,7 @@ address{
     box-shadow: none!important;
 }
 #formulario{    
-    margin: auto;
+    margin: 0!important;
     border: 2px solid #2B2F3A;
     box-shadow: 10px 10px 5px #888888;
 }
@@ -215,4 +215,12 @@ background: #D2D2D2;
 }
 .email-box{
   width: 60% 
+}
+.ui-dialog-content {
+    /*CORPO DO DIALOG*/
+    padding: 0!important;
+}
+#user{
+    color: deeppink;
+    text-transform: uppercase;
 }

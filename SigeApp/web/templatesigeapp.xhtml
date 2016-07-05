@@ -14,9 +14,7 @@
     <h:body>
         <div id="site">
             <div id="head">
-                <a href="https://github.com/joaofolle/sige">
-                    <p:graphicImage library="img" name="git.png" title="Link para o projeto" width="40"/>
-                </a>
+
                 <h1>Sistema Gerenciador de Eventos</h1>
 
             </div>
@@ -37,13 +35,17 @@
                          </li>
                         -->
                         <li class='last'><a href='#'><span>Contato</span></a></li>
-                        <li class='last'>  <span>Usuario : #{loginBean.usuario.nome}</span></li>
+                        <li class='last'>  <span id="user">Usuario : #{loginBean.usuario.nome}</span></li>
                     </ul>
 
                 </div>
             </h:form>
             <div id="conteudo">
-                <ui:insert name="conteudo">CONTEUDO VAZIO</ui:insert>
+                <ui:insert name="conteudo">
+                    
+                    
+
+                </ui:insert>
             </div>
             <footer>
                 <div style="display: none"> <p:clock /></div>

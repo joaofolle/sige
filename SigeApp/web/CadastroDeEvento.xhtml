@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
-    <body>
+    <body >
 
         <ui:composition template="./templatesigeapp.xhtml">
 
@@ -15,59 +15,63 @@
             </ui:define>
 
             <ui:define name="conteudo">
-                
-                <br/><br/>
+
+                <br/>
                 <h:form prependId="false">
                     <br/>
-                    <p:messages closable="true"  style="width: 600px; margin: auto;font-size: 12px" />
-                    <p:panelGrid  columns="2"  id="formulario" >
-                        <f:facet name="header" >
-                            <p>Formulário de criação de evento</p>
-                        </f:facet>                       
+                    <div align="center">
+                        <p:messages closable="true"  style="width: 600px; margin: auto;font-size: 12px" />
+                        <p:panelGrid  columns="2"  id="formulario" >
+                            <f:facet name="header" >
+                                <p>Formulário de criação de evento</p>
+                            </f:facet>                       
 
-                        <p:outputLabel for="txtTituloEvento" value="Nome do Evento:"/>
-                        <p:inputText id="txtTituloEvento" label="tituloEvento" maxlength="100" size="40" value="#{EventoBean.evento.tituloEvento}" required="true"/>
+                            <p:outputLabel for="txtTituloEvento" value="Nome do Evento:"/>
+                            <p:inputText id="txtTituloEvento" label="tituloEvento" maxlength="100" size="40" value="#{EventoBean.evento.tituloEvento}" required="true"/>
 
-                        <p:outputLabel for="txtlocal" value="Local do Evento:"/>
-                        <p:inputText id="txtlocal" label="tituloEvento" maxlength="100" size="40" value="#{EventoBean.evento.lugar}" required="true"/>
+                            <p:outputLabel for="txtlocal" value="Local do Evento:"/>
+                            <p:inputText id="txtlocal" class="controls" label="tituloEvento" type="text" maxlength="100" size="54" value="#{EventoBean.evento.lugar}" required="true" style="font-size: 10pt"/>
 
-                        <p:outputLabel for="txtAutor" value="Autor(1)" />
-                        <p:inputText id="txtAutor" label="Autor" maxlength="100" size="40" value="#{EventoBean.evento.autor}"/>
+                            <p:outputLabel for="txtAutor" value="Autor(1)" />
+                            <p:inputText id="txtAutor" label="Autor" maxlength="100" size="40" value="#{EventoBean.evento.autor}"/>
+
+                            <p:outputLabel for="txtAutores" value="Autor(2): " />
+                            <p:inputText id="txtAutores" label="Autor" maxlength="100" size="40" value="#{EventoBean.evento.segundoautor}" />
+
+                            <p:outputLabel for="txtTrilhaEvento" value="Trilha do Evento: "  />
+                            <p:inputText id="txtTrilhaEvento" label="TrilhaEvento" maxlength="100" size="40" value="#{EventoBean.evento.trilhaEvento}" required="true"/>
+
+                            <p:outputLabel for="TipoEvento"  value="Tipo de Evento:" />
+                            <p:selectOneRadio id="TipoEvento" value="#{EventoBean.evento.tipoEvento}" required="true" requiredMessage="Pelo menos um tipo de Evento deve ser escolhido">
+                                <f:selectItem itemLabel="Palestra" itemValue="Palestra" />
+                                <f:selectItem itemLabel="Oficina" itemValue="Oficina" />
+                                <f:selectItem itemLabel="Cursos" itemValue="Curso" />
+                            </p:selectOneRadio>
+
+                            <p:outputLabel for="txtDescricaoEvento" value="Descrição do Evento: " />
+                            <p:inputTextarea id="txtDescricaoEvento" label="DescricaoEvento" cols="40" rows="5" value="#{EventoBean.evento.descricaoEvento}"/>
+
+                            <p:outputLabel for="time" value="Horário:" />
+                            <p:calendar id="time" value="#{EventoBean.evento.horario}" pattern="HH:mm" timeOnly="true" size="10" required="true"/>
+
+                            <p:outputLabel for="calDataEvento" value="Data do Evento: " />
+                            <p:calendar id="calDataEvento" size="10" navigator="true" yearRange="c-100:c+0" pattern="dd/MM/yyyy" value="#{EventoBean.evento.dataEvento}"/>
+
+                            <p:outputLabel for="calDataEventoinicio" value="Inicio inscrições: " />
+                            <p:calendar id="calDataEventoinicio" size="10" navigator="true" yearRange="c-100:c+0" pattern="dd/MM/yyyy" value="#{EventoBean.evento.inicioEvento}"/>
+
+                            <p:outputLabel for="calDataEventofinal" value="Fim das inscrições: " />
+                            <p:calendar id="calDataEventofinal" size="10" navigator="true" yearRange="c-100:c+0" pattern="dd/MM/yyyy" value="#{EventoBean.evento.fimEvento}"/>
+
+
+                            <f:facet name="footer">
+                                <p:button value="Voltar" outcome="principal" style="width: 49.5%;margin-bottom: 5px;"/>
+                                <p:commandButton ajax="false" value="Criar Evento" actionListener="#{EventoBean.evento.setIdUsuarioCriador(loginBean.usuario.id)}" action="#{EventoBean.salvar()}" style="width: 49.5%;float: right"/>
+                            </f:facet>
+                        </p:panelGrid>
                         
-                        <p:outputLabel for="txtAutores" value="Autor(2): " />
-                        <p:inputText id="txtAutores" label="Autor" maxlength="100" size="40" value="#{EventoBean.evento.segundoautor}" />
-
-                        <p:outputLabel for="txtTrilhaEvento" value="Trilha do Evento: "  />
-                        <p:inputText id="txtTrilhaEvento" label="TrilhaEvento" maxlength="100" size="40" value="#{EventoBean.evento.trilhaEvento}" required="true"/>
-
-                        <p:outputLabel for="TipoEvento"  value="Tipo de Evento:" />
-                        <p:selectOneRadio id="TipoEvento" value="#{EventoBean.evento.tipoEvento}" required="true" requiredMessage="Pelo menos um tipo de Evento deve ser escolhido">
-                            <f:selectItem itemLabel="Palestra" itemValue="Palestra" />
-                            <f:selectItem itemLabel="Oficina" itemValue="Oficina" />
-                            <f:selectItem itemLabel="Cursos" itemValue="Curso" />
-                        </p:selectOneRadio>
-
-                        <p:outputLabel for="txtDescricaoEvento" value="Descrição do Evento: " />
-                        <p:inputTextarea id="txtDescricaoEvento" label="DescricaoEvento" cols="40" rows="5" value="#{EventoBean.evento.descricaoEvento}"/>
-
-                        <p:outputLabel for="time" value="Horário:" />
-                        <p:calendar id="time" value="#{EventoBean.evento.horario}" pattern="HH:mm" timeOnly="true" size="10" required="true"/>
-
-                        <p:outputLabel for="calDataEvento" value="Data do Evento: " />
-                        <p:calendar id="calDataEvento" size="10" navigator="true" yearRange="c-100:c+0" pattern="dd/MM/yyyy" value="#{EventoBean.evento.dataEvento}"/>
-
-                        <p:outputLabel for="calDataEventoinicio" value="Inicio inscrições: " />
-                        <p:calendar id="calDataEventoinicio" size="10" navigator="true" yearRange="c-100:c+0" pattern="dd/MM/yyyy" value="#{EventoBean.evento.inicioEvento}"/>
-
-                        <p:outputLabel for="calDataEventofinal" value="Fim das inscrições: " />
-                        <p:calendar id="calDataEventofinal" size="10" navigator="true" yearRange="c-100:c+0" pattern="dd/MM/yyyy" value="#{EventoBean.evento.fimEvento}"/>
-
-
-                        <f:facet name="footer">
-                            <p:button value="Voltar" outcome="principal" style="width: 49.5%;margin-bottom: 5px;"/>
-                            <p:commandButton ajax="false" value="Criar Evento" actionListener="#{EventoBean.evento.setIdUsuarioCriador(loginBean.usuario.id)}" action="#{EventoBean.salvar()}" style="width: 49.5%;float: right"/>
-                        </f:facet>
-                    </p:panelGrid>
+                        <h:outputScript library="js" name="autoend.js"/>
+                    </div>
 
                 </h:form>
             </ui:define>

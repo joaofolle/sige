@@ -5,10 +5,10 @@
         <param-value>Development</param-value>
     </context-param>
     
-    <context-param>  
+    <!--<context-param>  
     <param-name>primefaces.THEME</param-name>  
     <param-value>cruze</param-value>  
-    </context-param> 
+    </context-param>--> 
     
     <filter>
         <filter-name>FiltroTransacoesHibernate</filter-name>

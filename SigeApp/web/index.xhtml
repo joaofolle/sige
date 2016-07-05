@@ -15,8 +15,7 @@
 
                 
                 <p:dataTable value="#{EventoBean.listaEventos}" var="evento" rows="4" paginator="true">
-                    <f:facet name="header" >
-                            <p>Sistema de Gerenciamento de Eventos</p>
+                    <f:facet name="header" >                            
                             <p:commandButton ajax="false" value="Entrar"  type="button" onclick="PF('dlgLogin').show();" style="width: 49%;"/>
                             <p:commandButton ajax="false" value="Criar Conta" action="CadastroDeUsuario" style="width: 49%;float: right"/>
                 </f:facet> 
@@ -39,7 +38,7 @@
             </h:form>
         </ui:define>
         <ui:define name="dialogos">
-            <p:dialog header="Faça Login" widgetVar="dlgLogin" modal="true">
+            <p:dialog draggable="false" hideEffect="puff" resizable="false" position="top" widgetVar="dlgLogin" modal="true" showEffect="puff">
                                 <div class="center">             
                     <p:growl/>
                     <h:form prependId="false">
@@ -57,7 +56,7 @@
                                 <p:commandButton ajax="false" value="Criar Conta" action="CadastroDeUsuario" style="width: 49%;float: right"/>
                             </f:facet>
                         </h:panelGrid>
-                        <br/><br/><br/>
+                        
                     </h:form>
                 </div> 
             </p:dialog>
