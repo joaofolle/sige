@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
-    <body>
+    <body onload="initMap()">
 
         <ui:composition template="./templatesigeapp.xhtml">
 
@@ -16,11 +16,12 @@
 
             <ui:define name="conteudo">
                 <br/><br/>
+                <div align="center">
                 <h:form prependId="false">
                     <p:panelGrid columns="2" id="formulario" >
                         <f:facet name="header" >
                             <p>EVENTO</p>    <p:commandButton ajax="false" value="Participantes" title="Participantes" type="button" onclick="PF('dlgParticipante').show();"/>
-                            <p:commandButton ajax="false" value="Ver no Mapa" actionListener="#{EventoBean.carregar(1)}" action="localizacaoMapa.jsp"/>
+                            <p:commandButton ajax="false" value="Ver no Mapa" action="localizacaoMapa.jsp" immediate="true"/>
                         </f:facet>
                         <p:outputLabel for="txtTipo" value="Tipo de Evento: "/>
                         <h:outputText id="txtTipo" value="#{EventoBean.evento.tipoEvento}"/>
@@ -34,15 +35,18 @@
                         <h:outputText id="txtAutor" value="#{EventoBean.evento.autor}"/>
                         <p:outputLabel for="txtData" value="Data: "/>
                         <h:outputText id="txtData" value="#{EventoBean.evento.dataEvento}"/>
+                        <p:outputLabel for="txtLugar" value="Local: "/>
+                        <h:inputText id="txtLugar" value="#{EventoBean.evento.lugar}"/>
                         <f:facet name="footer">
                             <p:button value="Voltar"  onclick="javascript:window.history.go(-1)" style="width: 99%"/>
                         </f:facet>
                     </p:panelGrid>
                 </h:form>
+                </div>
             </ui:define>
               
             <ui:define name="dialogos">
-            <p:dialog widgetVar="dlgParticipante" modal="true">
+                <p:dialog widgetVar="dlgParticipante" modal="true" width="80%" position="top">
                                 <div class="center">             
                     <p:growl/>
                     <h:form>
@@ -66,6 +70,38 @@
             </p:dialog>
             </ui:define>
         </ui:composition>
+        <div id="map" style="width: 500px;height: 500px"></div>
+            <script type="text/javascript">
+                function initMap() {
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 16,
+                        center: {lat: -30.093703, lng: -51.141438}//-30.093703,-51.141438,porto alegre
+                    });
+                    var geocoder = new google.maps.Geocoder();
+
+
+                    geocodeAddress(geocoder, map);//executa a função
+
+                }
+
+                function geocodeAddress(geocoder, resultsMap) {
+                    var address = document.getElementById('txtLugar').value;
+                   alert(address);
+                    geocoder.geocode({'address': address}, function (results, status) {
+                        if (status === google.maps.GeocoderStatus.OK) {
+                            resultsMap.setCenter(results[0].geometry.location);
+                            var marker = new google.maps.Marker({
+                                map: resultsMap,
+                                position: results[0].geometry.location
+                            });
+                        } else {
+                            alert('Endereço não informado ' + status);
+                        }
+                    });
+                }
+
+            </script>
+                    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWMM38dR6Rg50ts6aDNXUaDFZpEI1G1As"> </script>
 
     </body>
 </html>

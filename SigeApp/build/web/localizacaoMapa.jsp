@@ -55,8 +55,8 @@
         <body >
             <div id="floating-panel">
                 
-                <h:inputText id="address"  value="#{EventoBean.evento.lugar}"/> 
-                
+                <h:inputHidden id="address"  value="#{EventoBean.evento.lugar}"/> 
+                <h:outputText id="txtLugar" value="teste"/>
             </div>
             <a class="btn-voltar" href="javascript:window.history.go(-1)">VOLTAR</a>
             <div id="map"></div>
@@ -75,6 +75,7 @@
 
                 function geocodeAddress(geocoder, resultsMap) {
                     var address = document.getElementById('address').value;
+                   alert(address);
                     geocoder.geocode({'address': address}, function (results, status) {
                         if (status === google.maps.GeocoderStatus.OK) {
                             resultsMap.setCenter(results[0].geometry.location);

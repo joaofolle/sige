@@ -99,8 +99,15 @@ public class CadastroEventosBean {
         evento = new Evento();
         listaEventos = dao.listar();
     }
-    public void autorCriadorEvento(Usuario usuario){
+    public String autorCriadorEvento(Usuario usuario){
         setListaEventosDoUsuario(dao.carregarEventosDoUsuario(usuario.getId()));
+        if(listaEventosDoUsuario.isEmpty()){
+            enviarMensagem(FacesMessage.SEVERITY_INFO, "Você não possui evento(s) cadastrado(s) !!!");
+            return null;
+        }else{
+           
+            return "eventosDoUsuario";
+        }
     }
 
     private void enviarMensagem(Severity sev, String msg) {

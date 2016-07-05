@@ -15,50 +15,54 @@
             </ui:define>
 
             <ui:define name="conteudo">
-                <p:messages/>
+
+
 
                 <h:form prependId="false">
-                    <p:panelGrid columns="2" id="formulario" >
-                        <f:facet name="header">
-                            Cadastro de Usuário
-                        </f:facet>
-                        <p:outputLabel style="color: blue;font-size: larger" value="Dados De Acesso"/>
-                        <h:inputHidden/>
-                        
-                        <p:outputLabel for="txtLogin" value="Nome Login: "/>
-                        <p:inputText id="txtLogin" label="Nome Login" maxlength="100" size="40" value="#{usuarioBean.usuario.login}" required="true"/>
-                        
-                        <p:outputLabel for="txtSenha" value="Senha:"/>
-                        <p:password id="txtSenha" size="40" value="#{usuarioBean.usuario.senha}" required="true"/>                          
-                       
-                        <p:outputLabel style="color: blue;font-size: larger" value="Dados Pessoais"/><br/>
-                        <p:outputLabel for="txtNome" value="Nome: "/>                        
-                        <p:inputText id="txtNome" label="Nome" maxlength="100" size="40" value="#{usuarioBean.usuario.nome}" required="true"/>
-                        
-                        <p:outputLabel for="calDataNascimento" value="Data de Nascimento: "/>                        
-                        <p:calendar id="calDataNascimento" size="40" navigator="true" yearRange="c-100:c+0" pattern="dd/MM/yyyy" value="#{usuarioBean.usuario.dataNascimento}"/>
-                       
-                        <p:outputLabel for="txtCPF" value="CPF: "/>                        
-                        <p:inputMask id="txtCPF" label="CPF" size="40" value="#{usuarioBean.usuario.cpf}" mask="99999999999" required="true"/>
-                      
-                        <p:outputLabel for="txtTelefone" value="Telefone: "/>
-                        <p:inputMask id="txtTelefone" label="Telefone" size="40" value="#{usuarioBean.usuario.telefone}" mask="(99) 9999-9999" required="true"/>
-                        
-                        
-                        <p:outputLabel for="txtEndereco" value="Endereço: "/>
-                        <p:inputText id="txtEndereco" size="40" value="#{usuarioBean.usuario.endereco}" required="true"/>
-                       
-                        <p:outputLabel for="txtEmail" value="E-mail: "/>
-                        <p:inputText id="txtEmail" label="E-mail" maxlength="255" size="40" value="#{usuarioBean.usuario.email}" required="true" validatorMessage="Email inválido!">
-                            <f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+"/>
-                        </p:inputText>
-                        <f:facet name="footer">
-                            <p:button value="Voltar" outcome="index" style="width: 49.5%"/>
-                            <p:commandButton ajax="false" value="Criar conta" actionListener="#{usuarioBean.salvar()}" action="index" style="width: 49.5%;float: right"/>
-                        </f:facet>
-                    </p:panelGrid>
+                    <p:messages/>
+                    <div align="center">
+                        <p:panelGrid columns="2" id="formulario" >
+                            <f:facet name="header">
+                                Cadastro de Usuário
+                            </f:facet>
+                            <p:outputLabel style="color: blue;font-size: larger" value="Dados De Acesso"/>
+                            <h:inputHidden/>
 
+                            <p:outputLabel for="txtLogin" value="Nome Login: "/>
+                            <p:inputText id="txtLogin" label="Nome Login" maxlength="100" size="40" value="#{usuarioBean.usuario.login}" required="true"/>
+
+                            <p:outputLabel for="txtSenha" value="Senha:"/>
+                            <p:password id="txtSenha" size="40" value="#{usuarioBean.usuario.senha}" required="true"/>                          
+
+                            <p:outputLabel style="color: blue;font-size: larger" value="Dados Pessoais"/><br/>
+                            <p:outputLabel for="txtNome" value="Nome: "/>                        
+                            <p:inputText id="txtNome" label="Nome" maxlength="100" size="40" value="#{usuarioBean.usuario.nome}" required="true"/>
+
+                            <p:outputLabel for="calDataNascimento" value="Data de Nascimento: "/>                        
+                            <p:calendar id="calDataNascimento" size="40" navigator="true" yearRange="c-100:c+0" pattern="dd/MM/yyyy" value="#{usuarioBean.usuario.dataNascimento}"/>
+
+                            <p:outputLabel for="txtCPF" value="CPF: "/>                        
+                            <p:inputMask id="txtCPF" label="CPF" size="40" value="#{usuarioBean.usuario.cpf}" mask="99999999999" required="true"/>
+
+                            <p:outputLabel for="txtTelefone" value="Telefone: "/>
+                            <p:inputMask id="txtTelefone" label="Telefone" size="40" value="#{usuarioBean.usuario.telefone}" mask="(99) 9999-9999" required="true"/>
+
+
+                            <p:outputLabel for="txtEndereco" value="Endereço: "/>
+                            <p:inputText id="txtEndereco" size="40" value="#{usuarioBean.usuario.endereco}" required="true"/>
+
+                            <p:outputLabel for="txtEmail" value="E-mail: "/>
+                            <p:inputText id="txtEmail" label="E-mail" maxlength="255" size="40" value="#{usuarioBean.usuario.email}" required="true" validatorMessage="Email inválido!">
+                                <f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+"/>
+                            </p:inputText>
+                            <f:facet name="footer">
+                                <p:button value="Voltar" outcome="index" style="width: 49.5%"/>
+                                <p:commandButton ajax="false" value="Criar conta" actionListener="#{usuarioBean.salvar()}" action="index" style="width: 49.5%;float: right"/>
+                            </f:facet>
+                        </p:panelGrid>
+                    </div>
                 </h:form>
+
             </ui:define>
 
         </ui:composition>

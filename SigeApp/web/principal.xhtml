@@ -18,7 +18,7 @@
                 <div class="center">
 
 
-                    <p:messages/>
+                    <p:growl/>
                     <h:form prependId="false">
                         <br/> <br/>
                         <p:panelGrid columns="1" id="formulario" >
@@ -46,7 +46,7 @@
                                     </p:column>
                                 </p:dataTable>
                                 <br/><br/><br/>
-                                <p align="center"><p:commandButton ajax="false" value="Eventos que Gerencio >>" actionListener="#{EventoBean.autorCriadorEvento(loginBean.usuario)}"  action="eventosDoUsuario" style="width: 49%;"/></p>
+                                <p align="center"><p:commandButton ajax="false" value="Eventos que Gerencio >>" action="#{EventoBean.autorCriadorEvento(loginBean.usuario)}" style="width: 49%;"/></p>
                             </h:form>
                             <br/><br/><br/><br/><br/><br/>
                         </p:panelGrid>
