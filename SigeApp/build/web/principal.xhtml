@@ -41,7 +41,7 @@
                                         #{evento1.descricaoEvento}
                                     </p:column>
                                     <p:column headerText="Ações" width="200" style="text-align: center">
-                                        <p:commandButton ajax="false" title="Visualizar" icon="ui-icon-search" actionListener="#{EventoBean.carregar(evento1.id)}" action="detalhesDeEvento"/>
+                                        <p:commandButton ajax="false" title="Visualizar" icon="ui-icon-search" actionListener="#{EventoBean.carregar(evento1.id)}" action="detalhesDeEvento" />
                                         <p:commandButton ajax="false" title="Participar" icon="ui-icon-check" action="#{EventoBean.adicionar(evento1, loginBean.usuario)}"/>
                                     </p:column>
                                 </p:dataTable>
